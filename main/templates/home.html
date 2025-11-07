@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+  <div class="row align-items-center">
+    <div class="col-md-7">
+      <h1 class="text-success">Performance Habitat — Rénovation & Construction</h1>
+      <p class="text-secondary">Des solutions sur mesure pour vos projets de rénovation.</p>
+      <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Demander un devis</a>
+    </div>
+    <div class="col-md-5 text-center">
+      {% for p in featured %}
+        <img src="{{ p.image.url }}" class="img-fluid mb-2 rounded" alt="{{ p.titre }}">
+      {% empty %}
+        <img src="{% static 'img/placeholder.png' %}" class="img-fluid" alt="placeholder">
+      {% endfor %}
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <h2 class="mb-3 text-success">Nos services</h2>
+  <div class="row">
+    {% for s in services %}
+      <div class="col-md-4 mb-3">
+        <div class="card p-3 h-100">
+          <div class="d-flex align-items-center">
+            <i class="fa {{ s.icone }} fa-2x me-3"></i>
+            <div>
+              <h5>{{ s.titre }}</h5>
+              <p class="text-secondary">{{ s.description|truncatewords:20 }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">Aucun service pour l'instant.</div>
+    {% endfor %}
+  </div>
+
+  <hr class="my-4">
+
+  <h2 class="mb-3" style="color:#A6FF00;">Témoignages</h2>
+  {% for t in testimonials %}
+    <blockquote class="blockquote">{{ t.contenu }}<footer class="blockquote-footer">{{ t.nom }}</footer></blockquote>
+  {% empty %}
+    <p class="text-secondary">Pas encore de témoignages.</p>
+  {% endfor %}
+
+{% endblock %}

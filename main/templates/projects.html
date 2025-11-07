@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Réalisations{% endblock %}
+{% block content %}
+<h1 class="text-success">Réalisations</h1>
+<div class="row mt-4">
+  {% for p in projects %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.titre }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ p.titre }}</h5>
+          <p class="text-secondary">{{ p.description|truncatewords:20 }}</p>
+          <a href="{% url 'project_detail' p.slug %}" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col-12">Aucune réalisation pour l'instant.</div>
+  {% endfor %}
+</div>
+{% endblock %}

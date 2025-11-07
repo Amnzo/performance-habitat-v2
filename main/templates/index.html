@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Performance Habitat - Ensemble, assurons votre confort</title>
+    <style>
+        /* Styles pour les images de services */
+.service-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #2c3e50;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-img {
+    transform: scale(1.05);
+}
+
+/* Supprimer ou modifier l'icône de service existante */
+.service-icon {
+    display: none; /* Cacher l'ancienne icône */
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --vert-fluo: #c4ff0e;
+            --gris-fonce: #2c3e50;
+            --gris-clair: #95a5a6;
+            --blanc: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--blanc);
+            background: var(--gris-fonce);
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--gris-fonce) 0%, #34495e 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-ph {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -0.1rem;
+        }
+
+        .logo-p {
+            color: var(--vert-fluo);
+        }
+
+        .logo-h {
+            color: var(--gris-clair);
+        }
+
+        .logo-text {
+            text-align: left;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15rem;
+           color: var(--gris-clair);
+        }
+
+        .logo-title span {
+            color: var(--vert-fluo);
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--gris-clair);
+            margin-top: 0.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--vert-fluo);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--vert-fluo);
+            color: var(--gris-fonce);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 100px,
+                rgba(196, 255, 14, 0.03) 100px,
+                rgba(196, 255, 14, 0.03) 200px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--blanc);
+        }
+
+        .hero h1 span {
+            color: var(--vert-fluo);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--gris-clair);
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            background: var(--vert-fluo);
+            color: var(--gris-fonce);
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            box-shadow: 0 10px 30px rgba(196, 255, 14, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.5);
+            background: #d4ff3e;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--blanc);
+        }
+
+        .section-title span {
+            color: var(--vert-fluo);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gris-clair);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--vert-fluo);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--gris-clair);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: #34495e;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 4px solid var(--vert-fluo);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--vert-fluo);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gris-clair);
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--vert-fluo);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--vert-fluo);
+        }
+
+        .service-card p {
+            color: var(--gris-clair);
+            line-height: 1.6;
+        }
+
+        .service-card ul {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .service-card li {
+            color: var(--gris-clair);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            color: var(--vert-fluo);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .realisation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .realisation-card {
+            background: #34495e;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .realisation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.2);
+        }
+
+        .realisation-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--gris-clair), var(--gris-fonce));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .realisation-content {
+            padding: 2rem;
+        }
+
+        .realisation-content h3 {
+            color: var(--vert-fluo);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .realisation-content p {
+            color: var(--gris-clair);
+            line-height: 1.6;
+        }
+
+        .temoignage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .temoignage-card {
+            background: #34495e;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--vert-fluo);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .temoignage-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .temoignage-text {
+            color: var(--gris-clair);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .temoignage-author {
+            color: var(--vert-fluo);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .temoignage-rating {
+            color: var(--vert-fluo);
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .zone-content {
+            text-align: center;
+        }
+
+        .zone-content p {
+            font-size: 1.3rem;
+            color: var(--gris-clair);
+            line-height: 2;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+
+        .zone-highlight {
+            background: var(--vert-fluo);
+            color: var(--gris-fonce);
+            padding: 3rem;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .engagements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .engagement-card {
+            background: #34495e;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 4px solid var(--vert-fluo);
+        }
+
+        .engagement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .engagement-card h3 {
+            color: var(--vert-fluo);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .engagement-card p {
+            color: var(--gris-clair);
+            line-height: 1.6;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #34495e;
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            color: var(--vert-fluo);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--gris-clair);
+            font-size: 1.1rem;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: var(--vert-fluo);
+        }
+
+        .contact-form {
+            background: #34495e;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--vert-fluo);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gris-clair);
+            border-radius: 8px;
+            background: var(--gris-fonce);
+            color: var(--blanc);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--vert-fluo);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .footer {
+            background: #1a252f;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-banner {
+            background: var(--vert-fluo);
+            color: var(--gris-fonce);
+            padding: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--vert-fluo);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--gris-clair);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--vert-fluo);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gris-clair);
+            color: var(--gris-clair);
+        }
+
+        .pompe-chaleur-section {
+            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
+            padding: 5rem 0;
+            margin: 5rem 0;
+        }
+
+        .pompe-chaleur-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .pompe-chaleur-text h3 {
+            font-size: 2.5rem;
+            color: var(--vert-fluo);
+            margin-bottom: 1.5rem;
+        }
+
+        .pompe-chaleur-text p {
+            color: var(--gris-clair);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .aides-list {
+            margin-top: 2rem;
+        }
+
+        .aides-list li {
+            color: var(--gris-clair);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .aides-list li::before {
+            content: '✓';
+            color: var(--vert-fluo);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--gris-fonce);
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .about-content,
+            .contact-wrapper,
+            .pompe-chaleur-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .logo-ph {
+                font-size: 2.5rem;
+            }
+
+            .logo-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-ph">
+                        <span class="logo-p">P</span><span class="logo-h">H</span>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">PERFORMANCE <span>HABITAT</span></div>
+                        <div class="logo-subtitle">NEUF & RÉNOVATION - Ensemble, assurons votre confort</div>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <nav>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pompe-chaleur">Pompe à chaleur</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
+                        <li><a href="#zone">Zone</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="container hero-content">
+            <h1> SALLE DE BAIN <span>CLÉ EN MAIN</span></h1>
+            <p>Plomberie - Chauffage - Électricité - Carrelage & Sols - Cloisons Sèches - Peinture</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                Demander un devis gratuit
+            </button>
+        </div>
+    </section>
+
+    <section id="apropos" class="section">
+        <div class="container">
+            <h2 class="section-title">À propos de <span>Performance Habitat</span></h2>
+            <p class="section-subtitle">Votre artisan spécialiste en rénovation et amélioration énergétique</p>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Jérôme HAMILTON - Votre expert</h3>
+                    <p>Performance Habitat est votre partenaire privilégié pour tous vos projets de rénovation et d'amélioration de l'habitat dans la région brestoise. Dirigée par Jérôme HAMILTON, notre entreprise allie expertise technique et savoir-faire artisanal pour transformer vos espaces de vie.</p>
+
+                    <p>Nous intervenons pour des projets de toutes envergures : de la simple réparation à la rénovation complète, en mettant l'accent sur la qualité des finitions et le respect de votre budget.</p>
+
+                    <p>Notre équipe met son savoir-faire à votre disposition pour vous garantir des travaux de qualité, dans le respect des délais et avec un suivi personnalisé de votre projet.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Années d'expérience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Projets réalisés</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">QualiPAC</div>
+                        <div class="stat-label">Certification</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+  <div class="container">
+    <h2 class="section-title">Nos Services</h2>
+    <div class="services-grid">
+      {% for service in services %}
+        <div class="service-card">
+          <!-- Remplacer cette partie -->
+          {% if service.image %}
+            <div class="service-image">
+              <img src="{{ service.image.url }}" alt="{{ service.titre }}" class="service-img">
+            </div>
+          {% endif %}
+
+          <h3>{{ service.titre }}</h3>
+          <p>{{ service.description }}</p>
+
+          {% if service.details.all %}
+            <ul>
+              {% for detail in service.details.all %}
+                <li>{{ detail.texte }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+    <section id="pompe-chaleur" class="pompe-chaleur-section">
+        <div class="container">
+            <div class="pompe-chaleur-content">
+                <div class="pompe-chaleur-text">
+                    <h3>POMPE À CHALEUR</h3>
+                    <p><strong>Divisez vos factures jusqu'à 70%</strong> et profitez des aides de l'État grâce à notre certification QualiPAC.</p>
+                    <p>Nous vous accompagnons dans votre projet d'installation de pompe à chaleur, du diagnostic à la mise en service, en passant par les démarches administratives pour bénéficier des aides financières.</p>
+
+                    <div class="aides-list">
+                        <h4 style="color: var(--vert-fluo); margin-bottom: 1rem;">Aides disponibles :</h4>
+                        <ul>
+                            <li>MaPrimeRénov'</li>
+                            <li>Prime CEE (Certificats d'Économies d'Énergie)</li>
+                            <li>Éco-prêt à taux zéro</li>
+                            <li>TVA réduite à 5,5%</li>
+                            <li>Aides des collectivités locales</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pompe-chaleur-image">
+                    <div style="background: #34495e; padding: 2rem; border-radius: 15px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🌡️</div>
+                        <h3 style="color: var(--vert-fluo); margin-bottom: 1rem;">Certification QualiPAC</h3>
+                        <p style="color: var(--gris-clair);">Notre certification nous permet de vous garantir des installations performantes et éligibles aux aides gouvernementales pour une amélioration énergétique optimale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="realisations" class="section">
+        <div class="container">
+            <h2 class="section-title">Nos <span>Réalisations</span></h2>
+            <p class="section-subtitle">Découvrez quelques-uns de nos projets récents dans la région brestoise</p>
+
+            <div class="realisation-grid">
+                <div class="realisation-card">
+                    <div class="realisation-image">🚿</div>
+                    <div class="realisation-content">
+                        <h3>Salle de Bain Moderne - Brest Centre</h3>
+                        <p>Création complète d'une salle de bain de 12m² avec douche à l'italienne, meuble vasque design et carrelage grand format. Projet réalisé en 3 semaines avec optimisation de l'espace.</p>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-image">🌡️</div>
+                    <div class="realisation-content">
+                        <h3>Installation Pompe à Chaleur - Guilers</h3>
+                        <p>Remplacement d'une ancienne chaudière fioul par une pompe à chaleur air-eau dernière génération. Gestion complète des aides et économies réalisées : 65% sur la facture de chauffage.</p>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-image">🧱</div>
+                    <div class="realisation-content">
+                        <h3>Réaménagement Appartement - Plouzané</h3>
+                        <p>Transformation complète avec création de cloisons sèches, nouvelle électricité, carrelage et peinture. Valorisation du patrimoine immobilier avec des finitions soignées.</p>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-image">🔌</div>
+                    <div class="realisation-content">
+                        <h3>Mise aux Normes Électrique - Le Relecq-Kerhuon</h3>
+                        <p>Rénovation complète de l'installation électrique d'une maison avec mise en place d'un tableau divisionnaire aux normes, prises de terre et éclairage LED.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="temoignages" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Témoignages <span>Clients</span></h2>
+            <p class="section-subtitle">Ce que nos clients disent de nous</p>
+
+            <div class="temoignage-grid">
+                <div class="temoignage-card">
+                    <div class="quote-icon">"</div>
+                    <div class="temoignage-content">
+                        <p class="temoignage-text">"Très professionnel et à l'écoute. La rénovation de notre salle de bain s'est parfaitement déroulée dans les délais et le budget prévus. Je recommande vivement Performance Habitat !"</p>
+                        <div class="temoignage-author">Marie D. - Brest Centre</div>
+                        <div class="temoignage-rating">★★★★★</div>
+                    </div>
+                </div>
+
+                <div class="temoignage-card">
+                    <div class="quote-icon">"</div>
+                    <div class="temoignage-content">
+                        <p class="temoignage-text">"Installation de notre pompe à chaleur réalisée avec professionnalisme. Jérôme a géré toutes les aides et les économies sont au rendez-vous. Un vrai partenaire de confiance."</p>
+                        <div class="temoignage-author">Pierre L. - Guilers</div>
+                        <div class="temoignage-rating">★★★★★</div>
+                    </div>
+                </div>
+
+                <div class="temoignage-card">
+                    <div class="quote-icon">"</div>
+                    <div class="temoignage-content">
+                        <p class="temoignage-text">"Une équipe sérieuse qui respecte ses engagements. La rénovation de notre appartement a considérablement amélioré notre confort et valorisé notre bien. Merci !"</p>
+                        <div class="temoignage-author">Sophie M. - Plouzané</div>
+                        <div class="temoignage-rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="zone" class="section">
+        <div class="container">
+            <h2 class="section-title">Notre <span>Zone d'Intervention</span></h2>
+            <div class="zone-content">
+                <p>Nous intervenons principalement dans le Finistère et ses alentours :</p>
+                <div class="zone-highlight">
+                    BREST • GUILERS • PLOUZANÉ • LE RELECQ-KERHUON • BOHARS • GOUESNOU • PLABENNEC • LANNILIS • ET TOUTE LA RÉGION BRESTOISE
+                </div>
+                <p>N'hésitez pas à nous contacter pour vérifier notre zone d'intervention sur votre commune.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Contactez-<span>nous</span></h2>
+            <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <div><strong>06 50 03 47 77</strong></div>
+                            <div>06 35 13 02 99</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div>performancehabitat29@gmail.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">👤</div>
+                        <div>
+                            <div><strong>Jérôme HAMILTON</strong></div>
+                            <div>Votre artisan expert</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🏢</div>
+                        <div>
+                            <div>Siège social : Lieu-dit Penfeld - 29820 GUILERS</div>
+                            <div>N° SIRET: 79376856500012</div>
+                            <div>Capital social : 12 500€</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <div>
+                            <div>Lundi - Vendredi : 8h00 - 18h00</div>
+                            <div>Samedi : 9h00 - 12h00</div>
+                            <div>Dimanche : Fermé</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom et Prénom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service souhaité</label>
+                            <select id="service" name="service" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="salle-de-bain">Salle de bain clé en main</option>
+                                <option value="electricite">Électricité générale</option>
+                                <option value="plomberie">Plomberie</option>
+                                <option value="chauffage">Chauffage</option>
+                                <option value="pompe-chaleur">Pompe à chaleur</option>
+                                <option value="carrelage">Carrelage & sols</option>
+                                <option value="cloison">Cloisons sèches</option>
+                                <option value="peinture">Peinture</option>
+                                <option value="autre">Autre projet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Description de votre projet</label>
+                            <textarea id="message" name="message" placeholder="Décrivez votre projet en détail..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande de devis</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-banner">
+                AVEC PERFORMANCE HABITAT, VALORISEZ VOTRE PATRIMOINE IMMOBILIER
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Performance Habitat</h4>
+                    <p>Votre artisan local spécialiste en rénovation et amélioration énergétique dans le Finistère. Neuf & Rénovation.</p>
+                    <p><strong>Jérôme HAMILTON</strong><br>Artisan qualifié</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Nos services</h4>
+                    <a href="#services">Salle de bain clé en main</a>
+                    <a href="#services">Plomberie</a>
+                    <a href="#services">Chauffage</a>
+                    <a href="#services">Électricité</a>
+                    <a href="#services">Pompes à chaleur</a>
+                    <a href="#services">Carrelage & sols</a>
+                    <a href="#services">Cloisons sèches</a>
+                    <a href="#services">Peinture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><strong>06 50 03 47 77</strong></p>
+                    <p>06 35 13 02 99</p>
+                    <p>performancehabitat29@gmail.com</p>
+                    <p>Lieu-dit Penfeld - 29820 GUILERS</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations légales</h4>
+                    <p>N° SIRET: 79376856500012</p>
+                    <p>Capital social : 12 500€</p>
+                    <p>Certification QualiPAC</p>
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Performance Habitat. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Gestion du formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous recontacterons rapidement pour votre devis gratuit.');
+            this.reset();
+        });
+
+        // Animation simple pour les statistiques
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stats = entry.target.querySelectorAll('.stat-number');
+                    stats.forEach(stat => {
+                        const target = parseInt(stat.textContent);
+                        let current = 0;
+                        const increment = target / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                            }
+                        }, 40);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observer la section à propos pour l'animation des stats
+        const aboutSection = document.getElementById('apropos');
+        if (aboutSection) {
+            observer.observe(aboutSection);
+        }
+    </script>
+</body>
+</html>
