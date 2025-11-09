@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Project, Testimonial, ContactRequest , ServiceDetail
+from .models import Service, Project, Testimonial, ContactRequest , ServiceDetail , Temoignage , CategorieGalerie , PhotoGalerie
 from django.utils.html import format_html
 
 
@@ -45,3 +45,35 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(ServiceDetail)
 class ServiceDetailAdmin(admin.ModelAdmin):
     list_display = ('service', 'texte')
+
+@admin.register(Temoignage)
+class TemoignageAdmin(admin.ModelAdmin):
+    list_display = ('nom', 'localisation', 'note', 'is_visible', 'date')
+    list_filter = ('is_visible', 'note', 'date')
+    search_fields = ('nom', 'localisation', 'texte')
+    ordering = ('-date',)
+    list_editable = ('is_visible',)
+    readonly_fields = ('date',)
+
+
+
+@admin.register(PhotoGalerie)
+class PhotoGalerieAdmin(admin.ModelAdmin):
+    list_display = ('titre', 'categorie', 'date_ajout', 'actif', 'ordre', 'image_preview')
+    list_filter = ('categorie', 'actif', 'date_ajout')
+    search_fields = ('titre', 'description')
+    ordering = ('ordre', '-date_ajout')
+    list_editable = ('actif', 'ordre')  # edit directly in list view
+
+    # Optional: display a small preview of the image
+    def image_preview(self, obj):
+        if obj.image:
+            return f'<img src="{obj.image.url}" width="50" height="50" style="object-fit: cover;" />'
+        return "-"
+    image_preview.short_description = 'Preview'
+    image_preview.allow_tags = True
+
+@admin.register(CategorieGalerie)
+class CategorieGalerieAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
+    search_fields = ('nom',)

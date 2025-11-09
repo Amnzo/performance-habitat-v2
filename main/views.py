@@ -1,17 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Service, Project, Testimonial
+from .models import Service, Project, Testimonial ,Temoignage ,PhotoGalerie , CategorieGalerie
 from .forms import ContactForm
 
 def index(request):
     services = Service.objects.all()
-    projects = Project.objects.all()[:3]
+    projects = Project.objects.all()
+    temoignages = Temoignage.objects.all()
     testimonials = Testimonial.objects.all()[:5]
+    categories= CategorieGalerie.objects.all()
+    photos = PhotoGalerie.objects.filter(actif=True).order_by('ordre', '-date_ajout')
     for t in testimonials:
         t.range = range(t.note)
     return render(request, 'index.html', {
         'services': services,
         'projects': projects,
+        'temoignages' : temoignages ,
         'testimonials': testimonials,
+        'photos': photos,
+        'categories':categories
     })
 
 def services_list(request):
