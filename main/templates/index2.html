@@ -1393,7 +1393,7 @@
         </div>
     </section>
 
-    <section id="realisations" class="section">
+     <section id="realisations" class="section">
         <div class="container">
             <h2 class="section-title">Nos <span>Réalisations</span></h2>
             <p class="section-subtitle">Découvrez quelques-uns de nos projets récents dans la région brestoise</p>
@@ -1407,7 +1407,20 @@
                     {% endif %}
                     <div class="realisation-content">
                         <h3>{{ projet.titre }}</h3>
-                        <p>{{ projet.description|safe }}</p>
+                        <p>{{ projet.description|safe|truncatewords_html:30 }}</p>
+
+                        <!-- Badges pour les images supplémentaires -->
+                        {% if projet.images.count > 0 %}
+                        <div style="margin-top: 1rem; color: var(--vert-fluo); font-size: 0.9rem;">
+                            📷 {{ projet.images.count }} photo{{ projet.images.count|pluralize }}
+                        </div>
+                        {% endif %}
+
+                        <!-- Bouton pour voir les détails -->
+                        <a href="{% url 'project_detail' projet.slug %}"
+                           style="display: inline-block; margin-top: 1rem; background: var(--vert-fluo); color: var(--gris-fonce); padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease;">
+                            Voir les détails →
+                        </a>
                     </div>
                 </div>
                 {% empty %}

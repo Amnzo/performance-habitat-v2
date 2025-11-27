@@ -52,6 +52,21 @@ class Project(models.Model):
     class Meta:
         ordering = ['-date']  # Les plus récents d’abord
 
+
+class ProjectImage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="projects/details/")
+    #titre = models.CharField(max_length=200, blank=True, null=True)  # <-- ajoute ceci
+    ordre = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["ordre"]
+
+    def __str__(self):
+        return f"image {self.id}"
+
+
+
 class Testimonial(models.Model):
     nom = models.CharField(max_length=100)
     contenu = models.TextField()

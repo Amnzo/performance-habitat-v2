@@ -11,6 +11,25 @@ def index(request):
     photos = PhotoGalerie.objects.filter(actif=True).order_by('ordre', '-date_ajout')
     for t in testimonials:
         t.range = range(t.note)
+    return render(request, 'index.html', {
+        'services': services,
+        'projects': projects,
+        'temoignages' : temoignages ,
+        'testimonials': testimonials,
+        'photos': photos,
+        'categories':categories
+    })
+
+
+def index2(request):
+    services = Service.objects.all()
+    projects = Project.objects.all()
+    temoignages = Temoignage.objects.all()
+    testimonials = Testimonial.objects.all()[:5]
+    categories= CategorieGalerie.objects.all()
+    photos = PhotoGalerie.objects.filter(actif=True).order_by('ordre', '-date_ajout')
+    for t in testimonials:
+        t.range = range(t.note)
     return render(request, 'index2.html', {
         'services': services,
         'projects': projects,
