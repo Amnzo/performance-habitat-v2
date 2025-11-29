@@ -3,338 +3,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Habitat - Ensemble, assurons votre confort</title>
-
     <style>
-        /* IMAGE BADGE */
 
-        /* REALISATION CARD */
-.realisation-card {
-    background: #34495e;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.realisation-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(196, 255, 14, 0.2);
-}
-
-.realisation-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    background: #2c3e50;
-    position: relative;
-}
-
-.realisation-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.realisation-card:hover .realisation-image img {
-    transform: scale(1.08);
-}
-
-.realisation-content {
-    padding: 2rem;
-}
-
-.realisation-content h3 {
-    color: var(--vert-fluo);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.realisation-content p {
-    color: var(--gris-clair);
-    line-height: 1.6;
-}
-
-/* IMAGE BADGE */
-.image-badge {
+        /* طبقة داكنة فوق الصور */
+.slider-overlay {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: var(--vert-fluo);
-    color: var(--gris-fonce);
-    padding: 0.6rem 1.2rem;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 5;
-}
-
-.realisation-card:hover .image-badge {
-    opacity: 1;
-    transform: translateY(0);
-}
-.image-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: var(--vert-fluo);
-    color: var(--gris-fonce);
-    padding: 0.6rem 1.2rem;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 5;
-}
-
-.realisation-card:hover .image-badge {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.realisation-image {
-    position: relative;
-}
-
-/* MODAL GALERIE */
-.modal-gallery {
-    display: none;
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 9999;
-    animation: fadeIn 0.3s ease;
+    background: rgba(0, 0, 0, 0.4); /* يمكنك الزيادة حتى 0.6 إن أردت */
+    z-index: 1;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-gallery.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-gallery-content {
-    width: 95%;
-    max-width: 1000px;
-    background: #1a252f;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(196, 255, 14, 0.3);
-    overflow: hidden;
-    animation: slideUp 0.4s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--vert-fluo);
-}
-
-.modal-title {
-    color: var(--blanc);
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.modal-title span {
-    color: var(--vert-fluo);
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 2.5rem;
-    color: var(--vert-fluo);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-close:hover {
-    transform: rotate(90deg) scale(1.1);
-}
-
-.carousel-main {
+/* جعل محتوى النص فوق الـ overlay */
+.hero-content {
     position: relative;
-    width: 100%;
-    height: 500px;
-    background: #2c3e50;
-    overflow: hidden;
+    z-index: 2;
 }
 
-.carousel-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: fadeInImage 0.4s ease;
-}
-
-@keyframes fadeInImage {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.carousel-counter {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    color: var(--vert-fluo);
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.carousel-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    pointer-events: none;
-}
-
-.carousel-btn {
-    background: rgba(196, 255, 14, 0.2);
-    border: 2px solid var(--vert-fluo);
-    color: var(--vert-fluo);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    pointer-events: all;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.carousel-btn:hover {
-    background: var(--vert-fluo);
-    color: var(--gris-fonce);
-    transform: scale(1.15);
-}
-
-.thumbnails-section {
-    background: #2c3e50;
-    padding: 1.5rem;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
-.thumbnails-title {
-    color: var(--gris-clair);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+/* نص الخدمات دائمًا أبيض + مع ظل خفيف */
+.services {
+    color: #ffffff;  /* أبيض صافي */
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.thumbnails-grid {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
 
-.thumbnail {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.thumbnail:hover {
-    transform: scale(1.08);
-}
-
-.thumbnail.active {
-    border-color: var(--vert-fluo);
-    box-shadow: 0 0 15px rgba(196, 255, 14, 0.5);
-}
-
-.modal-footer {
-    background: #1a252f;
-    padding: 2rem;
-    text-align: center;
-    color: var(--gris-clair);
-}
-
-.modal-footer p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .carousel-main {
-        height: 350px;
-    }
-
-    .thumbnails-section {
-        max-height: 120px;
-    }
-
-    .thumbnail {
-        width: 60px;
-        height: 60px;
-    }
-}
         * {
             margin: 0;
             padding: 0;
@@ -355,7 +56,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== HEADER AMÉLIORÉ ===== */
+        /* HEADER */
         .header {
             background: linear-gradient(135deg, var(--gris-fonce) 0%, #34495e 100%);
             padding: 1.5rem 0;
@@ -379,7 +80,6 @@
             flex-wrap: wrap;
         }
 
-        /* Logo optimisé */
         .logo {
             display: flex;
             align-items: center;
@@ -388,17 +88,10 @@
             min-width: 300px;
         }
 
-        .logo-ph {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
         .logo-img {
             height: 110px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
         }
 
         .logo-text {
@@ -408,11 +101,8 @@
         .logo-title {
             font-size: 1.6rem;
             font-weight: 700;
-            letter-spacing: 0.1rem;
             color: var(--blanc);
-            line-height: 1.3;
             margin-bottom: 0.4rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .logo-title span {
@@ -422,11 +112,8 @@
         .logo-subtitle {
             font-size: 0.85rem;
             color: var(--gris-clair);
-            line-height: 1.3;
-            font-weight: 500;
         }
 
-        /* Slogan breton repositionné */
         .header-slogan {
             color: #0e0c0c;
             background: linear-gradient(135deg, var(--vert-fluo) 0%, #d4ff3e 100%);
@@ -436,16 +123,8 @@
             text-align: center;
             border-radius: 10px;
             white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(196, 255, 14, 0.4);
-            transition: all 0.3s ease;
         }
 
-        .header-slogan:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(196, 255, 14, 0.5);
-        }
-
-        /* Navigation */
         .nav-menu {
             display: flex;
             gap: 1.8rem;
@@ -462,26 +141,10 @@
             font-size: 0.95rem;
             white-space: nowrap;
             position: relative;
-            padding-bottom: 4px;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--vert-fluo);
-            transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
             color: var(--vert-fluo);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
         }
 
         .nav-instagram {
@@ -489,17 +152,6 @@
             padding: 0.6rem 1.2rem !important;
             border-radius: 10px;
             font-size: 1.3rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(188, 24, 136, 0.3);
-        }
-
-        .nav-instagram:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(188, 24, 136, 0.5);
-        }
-
-        .nav-instagram::after {
-            display: none;
         }
 
         .menu-toggle {
@@ -511,14 +163,9 @@
             font-size: 1.5rem;
             cursor: pointer;
             border-radius: 8px;
-            transition: all 0.3s ease;
         }
 
-        .menu-toggle:hover {
-            transform: scale(1.05);
-        }
-
-        /* ===== HERO SLIDER ===== */
+        /* HERO SLIDER */
         .hero {
             position: relative;
             height: 600px;
@@ -537,22 +184,10 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
-            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
         }
 
         .slider-item.active {
             opacity: 1;
-        }
-
-        .slider-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
         }
 
         .slider-item img {
@@ -570,18 +205,6 @@
             z-index: 10;
             width: 90%;
             max-width: 1000px;
-            animation: slideInContent 0.8s ease-out forwards;
-        }
-
-        @keyframes slideInContent {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -60%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
         }
 
         .hero h1 {
@@ -589,9 +212,6 @@
             margin-bottom: 1.5rem;
             color: var(--blanc);
             font-weight: 900;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            line-height: 1.2;
-            letter-spacing: 0.05rem;
         }
 
         .hero h1 span {
@@ -605,7 +225,6 @@
             font-size: 1.5rem;
             color: var(--gris-clair);
             margin-bottom: 3rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .cta-button {
@@ -618,18 +237,12 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            box-shadow: 0 10px 30px rgba(196, 255, 14, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.5);
-            background: #d4ff3e;
         }
 
-        /* Contrôles du slider */
         .slider-controls {
             position: absolute;
             bottom: 30px;
@@ -638,7 +251,6 @@
             z-index: 20;
             display: flex;
             gap: 15px;
-            align-items: center;
         }
 
         .slider-dot {
@@ -648,14 +260,12 @@
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
 
         .slider-dot.active {
             background: var(--vert-fluo);
             width: 40px;
             border-radius: 20px;
-            box-shadow: 0 0 15px rgba(196, 255, 14, 0.6);
         }
 
         .slider-arrow {
@@ -673,14 +283,7 @@
             justify-content: center;
             color: var(--vert-fluo);
             font-size: 1.5rem;
-            transition: all 0.3s ease;
             z-index: 15;
-        }
-
-        .slider-arrow:hover {
-            background: var(--vert-fluo);
-            color: var(--gris-fonce);
-            transform: translateY(-50%) scale(1.1);
         }
 
         .slider-prev {
@@ -691,7 +294,7 @@
             right: 30px;
         }
 
-        /* ===== SECTIONS ===== */
+        /* SECTIONS */
         .section {
             padding: 5rem 0;
         }
@@ -721,7 +324,7 @@
             margin-right: auto;
         }
 
-        /* About section */
+        /* ABOUT */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -739,7 +342,6 @@
             color: var(--gris-clair);
             line-height: 1.8;
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
         }
 
         .stats-grid {
@@ -754,12 +356,6 @@
             border-radius: 15px;
             text-align: center;
             border-top: 4px solid var(--vert-fluo);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(196, 255, 14, 0.2);
         }
 
         .stat-number {
@@ -771,9 +367,9 @@
 
         .stat-label {
             color: var(--gris-clair);
-            font-size: 1rem;
         }
 
+        /* SERVICES */
         /* Services */
         .services-grid {
             display: grid;
@@ -851,7 +447,8 @@
             font-size: 1.2rem;
         }
 
-        /* Réalisations */
+
+        /* REALISATIONS */
         .realisation-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -864,11 +461,11 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .realisation-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.2);
         }
 
         .realisation-image {
@@ -876,6 +473,13 @@
             height: 250px;
             overflow: hidden;
             background: #2c3e50;
+            position: relative;
+        }
+
+        .realisation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .realisation-content {
@@ -893,7 +497,177 @@
             line-height: 1.6;
         }
 
-        /* Témoignages */
+        .image-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--vert-fluo);
+            color: var(--gris-fonce);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* MODAL GALERIE */
+        .modal-gallery {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+        }
+
+        .modal-gallery.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-gallery-content {
+            width: 95%;
+            max-width: 1000px;
+            background: #1a252f;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--vert-fluo);
+        }
+
+        .modal-title {
+            color: var(--blanc);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .modal-title span {
+            color: var(--vert-fluo);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: var(--vert-fluo);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-main {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: #2c3e50;
+            overflow: hidden;
+        }
+
+        .carousel-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--vert-fluo);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            background: rgba(196, 255, 14, 0.2);
+            border: 2px solid var(--vert-fluo);
+            color: var(--vert-fluo);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            pointer-events: all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thumbnails-section {
+            background: #2c3e50;
+            padding: 1.5rem;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .thumbnails-title {
+            color: var(--gris-clair);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .thumbnails-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail.active {
+            border-color: var(--vert-fluo);
+        }
+
+        .modal-footer {
+            background: #1a252f;
+            padding: 2rem;
+            text-align: center;
+            color: var(--gris-clair);
+        }
+
+        /* TEMOIGNAGES */
         .temoignage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -904,14 +678,7 @@
             background: #34495e;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .temoignage-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(196, 255, 14, 0.15);
         }
 
         .quote-icon {
@@ -921,11 +688,6 @@
             position: absolute;
             top: 1rem;
             left: 1rem;
-        }
-
-        .temoignage-content {
-            position: relative;
-            z-index: 1;
         }
 
         .temoignage-text {
@@ -938,94 +700,9 @@
         .temoignage-author {
             color: var(--vert-fluo);
             font-weight: 700;
-            font-size: 1.1rem;
         }
 
-        .temoignage-rating {
-            color: var(--vert-fluo);
-            font-size: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Pompe à chaleur */
-        .pompe-chaleur-section {
-            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
-            padding: 5rem 0;
-        }
-
-        .pompe-chaleur-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .pompe-chaleur-text h3 {
-            font-size: 2.5rem;
-            color: var(--vert-fluo);
-            margin-bottom: 1.5rem;
-        }
-
-        .pompe-chaleur-text p {
-            color: var(--gris-clair);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .aides-list {
-            margin-top: 2rem;
-        }
-
-        .aides-list h4 {
-            color: var(--vert-fluo);
-            margin-bottom: 1rem;
-        }
-
-        .aides-list ul {
-            list-style: none;
-        }
-
-        .aides-list li {
-            color: var(--gris-clair);
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .aides-list li::before {
-            content: '✓';
-            color: var(--vert-fluo);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Zone d'intervention */
-        .zone-content {
-            text-align: center;
-        }
-
-        .zone-content p {
-            font-size: 1.3rem;
-            color: var(--gris-clair);
-            line-height: 2;
-            max-width: 900px;
-            margin: 0 auto 3rem;
-        }
-
-        .zone-highlight {
-            background: var(--vert-fluo);
-            color: var(--gris-fonce);
-            padding: 3rem;
-            border-radius: 15px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Contact */
+        /* CONTACT */
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1050,7 +727,6 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             color: var(--gris-clair);
-            font-size: 1.05rem;
         }
 
         .info-icon {
@@ -1063,7 +739,6 @@
             background: #34495e;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
 
         .form-group {
@@ -1087,14 +762,6 @@
             background: var(--gris-fonce);
             color: var(--blanc);
             font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--vert-fluo);
         }
 
         .form-group textarea {
@@ -1102,418 +769,7 @@
             min-height: 150px;
         }
 
-        /* ===== GALERIE STYLES ===== */
-        .gallery-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: #34495e;
-            color: var(--blanc);
-            border: 2px solid transparent;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05rem;
-        }
-
-        .filter-btn:hover {
-            border-color: var(--vert-fluo);
-            color: var(--vert-fluo);
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background: var(--vert-fluo);
-            color: var(--gris-fonce);
-            border-color: var(--vert-fluo);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            opacity: 1;
-            transition: all 0.4s ease;
-        }
-
-        .gallery-item.hidden {
-            opacity: 0;
-            transform: scale(0.8);
-            position: absolute;
-            pointer-events: none;
-        }
-
-        .gallery-image-wrapper {
-            position: relative;
-            height: 280px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-image-wrapper:hover .gallery-img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-        }
-
-        .gallery-image-wrapper:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-info h4 {
-            color: var(--vert-fluo);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-info p {
-            color: var(--blanc);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-category {
-            display: inline-block;
-            background: var(--vert-fluo);
-            color: var(--gris-fonce);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .gallery-zoom {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--vert-fluo);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-zoom:hover {
-            transform: scale(1.15);
-            box-shadow: 0 5px 15px rgba(196, 255, 14, 0.5);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .lightbox.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: var(--vert-fluo);
-            font-size: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10000;
-        }
-
-        .lightbox-close:hover {
-            transform: scale(1.2);
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--vert-fluo);
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 1rem;
-            background: rgba(44, 62, 80, 0.8);
-            border-radius: 50%;
-            transition: all 0.3s;
-            user-select: none;
-        }
-
-        .lightbox-prev:hover,
-        .lightbox-next:hover {
-            background: var(--vert-fluo);
-            color: var(--gris-fonce);
-        }
-
-        .lightbox-prev {
-            left: 30px;
-        }
-
-        .lightbox-next {
-            right: 30px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--blanc);
-            background: rgba(0,0,0,0.7);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            max-width: 80%;
-            text-align: center;
-        }
-
-        /* ===== INSTAGRAM SECTION ===== */
-        .instagram-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .instagram-profile {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .instagram-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--vert-fluo);
-            padding: 3px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            overflow: hidden;
-        }
-
-        .instagram-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: white;
-        }
-
-        .instagram-info h3 {
-            color: var(--vert-fluo);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .instagram-info p {
-            color: var(--gris-clair);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .instagram-follow-btn {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4);
-            white-space: nowrap;
-        }
-
-        .instagram-follow-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(188, 24, 136, 0.6);
-        }
-
-        .insta-icon {
-            font-size: 1.5rem;
-        }
-
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .instagram-post {
-            position: relative;
-            height: 280px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        .instagram-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(196, 255, 14, 0.2);
-        }
-
-        .instagram-post img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .instagram-post:hover img {
-            transform: scale(1.05);
-        }
-
-        .instagram-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .instagram-post:hover .instagram-overlay {
-            opacity: 1;
-        }
-
-        .instagram-stats {
-            display: flex;
-            gap: 2rem;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .instagram-stats span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .instagram-cta {
-            text-align: center;
-        }
-
-        /* Bouton flottant Instagram */
-        .floating-instagram {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 8px 25px rgba(188, 24, 136, 0.5);
-            z-index: 1000;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            animation: pulse-insta 2s infinite;
-        }
-
-        @keyframes pulse-insta {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 8px 25px rgba(188, 24, 136, 0.5);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 12px 35px rgba(188, 24, 136, 0.7);
-            }
-        }
-
-        .floating-instagram:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* Footer */
+        /* FOOTER */
         .footer {
             background: #1a252f;
             padding: 3rem 0 1rem;
@@ -1525,10 +781,8 @@
             padding: 2rem;
             font-size: 1.8rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            margin-bottom: 3rem;
             text-align: center;
+            margin-bottom: 3rem;
         }
 
         .footer-content {
@@ -1541,7 +795,6 @@
         .footer-section h4 {
             color: var(--vert-fluo);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
         }
 
         .footer-section p,
@@ -1552,10 +805,6 @@
             display: block;
         }
 
-        .footer-section a:hover {
-            color: var(--vert-fluo);
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -1563,26 +812,7 @@
             color: var(--gris-clair);
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1100px) {
-            .header-content {
-                gap: 1.5rem;
-            }
-
-            .header-slogan {
-                order: 3;
-                width: 100%;
-                font-size: 0.85rem;
-                padding: 0.8rem 1.2rem;
-            }
-
-            .nav-menu {
-                order: 4;
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
+        /* RESPONSIVE */
         @media (max-width: 968px) {
             .hero {
                 height: 500px;
@@ -1600,32 +830,6 @@
                 font-size: 1.2rem;
             }
 
-            .slider-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .slider-prev {
-                left: 15px;
-            }
-
-            .slider-next {
-                right: 15px;
-            }
-
-            .logo-img {
-                height: 90px;
-            }
-
-            .logo-title {
-                font-size: 1.4rem;
-            }
-
-            .logo-subtitle {
-                font-size: 0.75rem;
-            }
-
             .nav-menu {
                 display: none;
                 flex-direction: column;
@@ -1635,7 +839,6 @@
                 right: 0;
                 background: var(--gris-fonce);
                 padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
                 gap: 1rem;
             }
 
@@ -1648,10 +851,45 @@
             }
 
             .about-content,
+
+             /* Pompe à chaleur */
+        .pompe-chaleur-section {
+            background: linear-gradient(135deg, #1a252f 0%, var(--gris-fonce) 100%);
+            padding: 5rem 0;
+        }
+
+        .pompe-chaleur-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .pompe-chaleur-text h3 {
+            font-size: 2.5rem;
+            color: var(--vert-fluo);
+            margin-bottom: 1.5rem;
+        }
+
+        .pompe-chaleur-text p {
+            color: var(--gris-clair);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
             .pompe-chaleur-content,
             .contact-wrapper {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .carousel-main {
+                height: 350px;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
             }
         }
 
@@ -1677,27 +915,6 @@
                 font-size: 0.95rem;
             }
 
-            .slider-controls {
-                bottom: 15px;
-                gap: 8px;
-            }
-
-            .slider-dot {
-                width: 8px;
-                height: 8px;
-            }
-
-            .slider-dot.active {
-                width: 30px;
-            }
-
-            .logo {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-                min-width: auto;
-            }
-
             .logo-img {
                 height: 70px;
             }
@@ -1706,14 +923,9 @@
                 font-size: 1.2rem;
             }
 
-            .logo-subtitle {
-                font-size: 0.7rem;
-            }
-
             .services-grid,
             .realisation-grid,
-            .temoignage-grid,
-            .gallery-grid {
+            .temoignage-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1721,9 +933,18 @@
                 font-size: 2rem;
             }
 
-            .zone-highlight {
-                font-size: 1.2rem;
-                padding: 2rem;
+            .modal-gallery-content {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+
+            .carousel-main {
+                height: 300px;
+            }
+
+            .thumbnails-section {
+                max-height: 120px;
             }
         }
     </style>
@@ -1733,9 +954,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-ph">
-                        <img src="{% static 'img/logo.png' %}" alt="Performance Habitat Logo" class="logo-img">
-                    </div>
+                    <img src="{% static 'img/logo.png' %}" alt="Performance Habitat Logo" class="logo-img">
                     <div class="logo-text">
                         <div class="logo-title">Performance <span>Habitat</span></div>
                         <div class="logo-subtitle">NEUF & RÉNOVATION - Ensemble, assurons votre confort</div>
@@ -1752,12 +971,11 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#pompe-chaleur">Pompe à chaleur</a></li>
                     <li><a href="#realisations">Réalisations</a></li>
-                    <li><a href="#gallerie">Galerie</a></li>
                     <li><a href="#temoignages">Témoignages</a></li>
                     <li><a href="#zone">Zone</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <a href="https://www.instagram.com/performancehabitat29/" target="_blank" rel="noopener noreferrer" title="Instagram — Performance Habitat" class="nav-instagram">
+                        <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="nav-instagram">
                             Instagram
                         </a>
                     </li>
@@ -1766,40 +984,37 @@
         </div>
     </header>
 
-    <!-- ===== HERO SLIDER ===== -->
-    <section id="accueil" class="hero">
-        <div class="slider-container">
-            <div class="slider-item active">
+   <section id="accueil" class="hero">
+    <div class="slider-container">
 
-                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=600&fit=crop" alt="projet 0">
-            </div>
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=600&fit=crop" alt="Projet 1">
-            </div>
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&h=600&fit=crop" alt="Projet 2">
-            </div>
+        <!-- Overlay sombre -->
+        <div class="slider-overlay"></div>
 
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?w=1200&h=600&fit=crop" alt="Projet 3">
-            </div>
-            <div class="slider-item">
-                <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&h=600&fit=crop" alt="Projet 4">
-            </div>
-
-            <!-- Contenu du héro -->
-            <div class="hero-content">
-                <h1>L'interlocuteur <span>unique pour tous vos travaux</span></h1>
-                <p>Plomberie - Chauffage - Électricité - Carrelage & Sols - Cloisons Sèches - Peinture</p>
-                <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Demander un devis gratuit</button>
-            </div>
-
-            <!-- Contrôles -->
-            <div class="slider-controls" id="sliderControls"></div>
-            <div class="slider-arrow slider-prev" onclick="prevSlide()">❮</div>
-            <div class="slider-arrow slider-next" onclick="nextSlide()">❯</div>
+        <div class="slider-item active">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=600&fit=crop" alt="projet 0">
         </div>
-    </section>
+        <div class="slider-item">
+            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=600&fit=crop" alt="Projet 1">
+        </div>
+        <div class="slider-item">
+            <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&h=600&fit=crop" alt="Projet 2">
+        </div>
+
+        <div class="hero-content">
+            <h1>L'interlocuteur <span>unique pour tous vos travaux</span></h1>
+           <p class="services">Plomberie - Chauffage - Électricité - Carrelage & Sols - Cloisons Sèches - Peinture</p>
+
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Demander un devis gratuit</button>
+        </div>
+
+        <div class="slider-controls" id="sliderControls"></div>
+        <div class="slider-arrow slider-prev" onclick="prevSlide()">❮</div>
+        <div class="slider-arrow slider-next" onclick="nextSlide()">❯</div>
+
+    </div>
+</section>
+
+
 
     <section id="apropos" class="section">
         <div class="container">
@@ -1809,9 +1024,8 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Votre expert en rénovation</h3>
-                    <p>Performance Habitat est votre partenaire privilégié pour tous vos projets de rénovation et d'amélioration de l'habitat dans la région brestoise. Notre entreprise allie expertise technique et savoir-faire artisanal pour transformer vos espaces de vie.</p>
+                    <p>Performance Habitat est votre partenaire privilégié pour tous vos projets de rénovation et d'amélioration de l'habitat dans la région brestoise.</p>
                     <p>Nous intervenons pour des projets de toutes envergures : de la simple réparation à la rénovation complète, en mettant l'accent sur la qualité des finitions et le respect de votre budget.</p>
-                    <p>Notre équipe met son savoir-faire à votre disposition pour vous garantir des travaux de qualité, dans le respect des délais et avec un suivi personnalisé de votre projet.</p>
                 </div>
 
                 <div class="stats-grid">
@@ -1832,7 +1046,7 @@
         </div>
     </section>
 
-    <section id="services" class="section section-alt">
+   <section id="services" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Nos <span>Services</span></h2>
             <p class="section-subtitle">Des solutions complètes pour tous vos projets de rénovation</p>
@@ -1863,113 +1077,91 @@
         </div>
     </section>
 
-    <section id="pompe-chaleur" class="pompe-chaleur-section">
-        <div class="container">
-            <div class="pompe-chaleur-content">
-                <div class="pompe-chaleur-text">
-                    <h3>POMPE À CHALEUR</h3>
-                    <p><strong>Divisez vos factures jusqu'à 70%</strong> en optant pour une solution de chauffage performante et économe en énergie.</p>
-                    <p>Nous vous accompagnons dans votre projet d'installation de pompe à chaleur : étude de faisabilité, choix du matériel, installation et mise en service, le tout dans le respect des normes en vigueur.</p>
-                    <div class="aides-list">
-                        <h4>Aides disponibles :</h4>
-                        <ul>
-                            <li>MaPrimeRénov' (sous conditions)</li>
-                            <li>Prime CEE (Certificats d'Économies d'Énergie)</li>
-                            <li>Éco-prêt à taux zéro</li>
-                            <li>TVA réduite à 5,5%</li>
-                            <li>Aides locales selon votre commune</li>
-                        </ul>
-                    </div>
-                </div>
+<section id="pompe-chaleur" class="section">
+  <div class="container">
+    <h2 class="section-title">Pompe à <span>Chaleur</span></h2>
+    <div class="about-content">
 
-               <div class="pompe-chaleur-image">
-                    <div style="background: #34495e; padding: 2rem; border-radius: 15px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">🌡️</div>
-                        <h3 style="color: var(--vert-fluo); margin-bottom: 1rem;">Installation Professionnelle</h3>
-                        <p style="color: var(--gris-clair);">
-                            Nous réalisons l'installation de pompes à chaleur avec rigueur et savoir-faire, en partenariat avec des fournisseurs certifiés.
-                            Votre confort et vos économies d'énergie sont notre priorité.
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <div class="about-text">
+        <h3 class="uppercase font-bold" style="color: var(--vert-fluo);">Pompe à Chaleur (PAC)</h3>
+
+        <p class="text-lg">
+          <strong>Nous assurons le remplacement complet de votre ancienne pompe à chaleur</strong> :
+          dépose propre, préparation de l’espace, installation du nouveau système et mise en service.
+        </p>
+
+        <p>Notre intervention inclut :</p>
+
+        <ul class="list-disc pl-5" style="color: var(--gris-clair); line-height:1.6;">
+          <li>Déconnexion et retrait sécurisé de l’ancienne installation</li>
+          <li>Démontage et évacuation des unités intérieures et extérieures</li>
+          <li>Nettoyage et préparation du nouvel emplacement</li>
+          <li>Raccordements électriques et hydraulique précis</li>
+          <li>Paramétrage, tests, et mise en service du nouveau système</li>
+        </ul>
+
+        <p class="mt-4">
+          Nous installons des systèmes <strong>Air-Air et Air-Eau</strong>, paramétrés pour offrir :
+        </p>
+
+        <ul style="color: var(--vert-fluo); font-weight:600; font-size:0.85rem; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.3rem;">
+          <li>Meilleur rendement énergétique</li>
+          <li>Fonctionnement plus silencieux</li>
+          <li>Régulation adaptée à l’habitation</li>
+          <li>Installation durable et fiable</li>
+        </ul>
+
+        <div style="background:#2a3b4c; padding: 0.9rem; border-radius: 10px; margin-top:1.2rem; text-align:center; color:var(--gris-clair); font-weight:500;">
+          🔧 <strong style="color:var(--vert-fluo);">Service :</strong> Dépose → Installation → Mise en service
         </div>
-    </section>
 
-     <section id="realisations" class="section">
+      </div>
+
+      <div>
+        <div style="background:#34495e; padding:2rem; border-radius:15px; text-align:center; height:100%; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-size:3.5rem; margin-bottom:1rem;">🌡️</div>
+          <h3 style="color:var(--vert-fluo); margin-bottom:0.8rem;">Installation Professionnelle</h3>
+          <p style="color:var(--gris-clair); font-size:0.95rem; font-weight:500; line-height:1.5;">
+            Un remplacement maîtrisé et une installation rigoureuse pour garantir un chauffage performant et fiable.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <section id="realisations" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Nos <span>Réalisations</span></h2>
-            <p class="section-subtitle">Découvrez quelques-uns de nos projets récents dans la région brestoise</p>
+            <p class="section-subtitle">Découvrez quelques-uns de nos projets récents</p>
             <div class="realisation-grid">
                 {% for projet in projects %}
-<div class="realisation-card" onclick="openProjectGallery('{{ projet.id }}')">
-    {% if projet.image %}
-    <div class="realisation-image">
-        <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
-        {% if projet.images.count > 0 %}
-        <div class="image-badge">
-            📷 +{{ projet.images.count }} photos
-        </div>
-        {% endif %}
-    </div>
-    {% endif %}
-    <div class="realisation-content">
-        <h3>{{ projet.titre }}</h3>
-        <p>{{ projet.description|safe|truncatewords_html:30 }}</p>
-    </div>
-</div>
-{% empty %}
-<p class="empty-text">Nos réalisations seront bientôt disponibles.</p>
-{% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section id="gallerie" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Notre <span>Galerie</span></h2>
-            <p class="section-subtitle">Parcourez nos projets en images</p>
-
-            <!-- Filtres de galerie -->
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                {% for cat in categories %}
-                    <button class="filter-btn" data-filter="{{ cat.slug }}">{{ cat.nom }}</button>
-                {% endfor %}
-            </div>
-
-            <div class="gallery-grid">
-                {% for photo in photos %}
-                <div class="gallery-item" data-category="{{ photo.categorie.slug }}">
-                    <div class="gallery-image-wrapper">
-                        <img src="{{ photo.image.url }}" alt="{{ photo.titre }}" class="gallery-img">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h4>{{ photo.titre }}</h4>
-                                {% if photo.description %}
-                                    <p>{{ photo.description|truncatewords:20 }}</p>
-                                {% endif %}
-                                <span class="gallery-category">{{ photo.categorie.nom }}</span>
-                            </div>
-                            <button class="gallery-zoom" onclick="openLightbox({{ forloop.counter0 }})">🔍</button>
+                <div class="realisation-card" onclick="openProjectGallery('{{ projet.id }}')">
+                    {% if projet.image %}
+                    <div class="realisation-image">
+                        <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
+                        {% if projet.images.count > 0 %}
+                        <div class="image-badge">
+                            📷 +{{ projet.images.count }} photos
                         </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    <div class="realisation-content">
+                        <h3>{{ projet.titre }}</h3>
+                        <p>{{ projet.description|safe|truncatewords_html:30 }}</p>
                     </div>
                 </div>
+                {% empty %}
+                <p style="color: var(--gris-clair); text-align: center; grid-column: 1/-1;">Nos réalisations seront bientôt disponibles.</p>
                 {% endfor %}
             </div>
         </div>
     </section>
 
-    <!-- Lightbox pour agrandir les images -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <span class="lightbox-prev" onclick="changeLightbox(-1)">&#10094;</span>
-        <span class="lightbox-next" onclick="changeLightbox(1)">&#10095;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-
-    <section id="temoignages" class="section section-alt">
+    <section id="temoignages" class="section">
         <div class="container">
             <h2 class="section-title">Témoignages <span>Clients</span></h2>
             <p class="section-subtitle">Ce que nos clients disent de nous</p>
@@ -1980,9 +1172,6 @@
                     <div class="temoignage-content">
                         <p class="temoignage-text">"{{ t.texte }}"</p>
                         <div class="temoignage-author">{{ t.nom }}{% if t.localisation %} - {{ t.localisation }}{% endif %}</div>
-                        <div class="temoignage-rating">
-                            {% for i in "★★★★★"|slice:":"|make_list %}{% if forloop.counter <= t.note %}★{% endif %}{% endfor %}
-                        </div>
                     </div>
                 </div>
                 {% empty %}
@@ -1992,107 +1181,19 @@
         </div>
     </section>
 
-    <section id="instagram-feed" class="section">
-        <div class="container">
-            <h2 class="section-title">Suivez-nous sur <span>Instagram</span></h2>
-            <p class="section-subtitle">Découvrez nos dernières réalisations et l'envers du décor de nos chantiers</p>
-
-            <div class="instagram-header">
-                <div class="instagram-profile">
-                    <div class="instagram-avatar">
-                        <img src="{% static 'img/logo.png' %}" alt="Performance Habitat">
-                    </div>
-                    <div class="instagram-info">
-                        <h3>@performancehabitat29</h3>
-                        <p>🏠 Rénovation & Amélioration Énergétique | 🔧 Artisan Breton </p>
-                    </div>
-                </div>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-follow-btn">
-                    <span class="insta-icon">📷</span>
-                    Suivre sur Instagram
-                </a>
-            </div>
-
-            <!-- Grille Instagram simulée -->
-            <div class="instagram-grid">
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 45</span>
-                            <span>💬 3</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 52</span>
-                            <span>💬 5</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 38</span>
-                            <span>💬 2</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 61</span>
-                            <span>💬 7</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1565183928294-7d22f2d8d2b4?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 47</span>
-                            <span>💬 4</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="instagram-post">
-                    <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600" alt="Réalisation Instagram">
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats">
-                            <span>❤️ 55</span>
-                            <span>💬 6</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="instagram-cta">
-                <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="cta-button">
-                    📷 Voir plus sur Instagram
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="zone" class="section">
+    <section id="zone" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Notre <span>Zone d'Intervention</span></h2>
             <div class="zone-content">
                 <p>Nous intervenons principalement dans le Finistère et ses alentours :</p>
-                <div class="zone-highlight">
-                    BREST • GUILERS • PLOUZANÉ • LE RELECQ-KERHUON • BOHARS • GOUESNOU • PLABENNEC • LANNILIS • ET TOUTE LA RÉGION BRESTOISE
+                <div style="background: var(--vert-fluo); color: var(--gris-fonce); padding: 2rem; border-radius: 15px; font-weight: 700; margin: 2rem 0;">
+                    BREST • GUILERS • PLOUZANÉ • LE RELECQ-KERHUON • BOHARS • GOUESNOU • PLABENNEC • LANNILIS
                 </div>
-                <p style="margin-top: 2rem;">N'hésitez pas à nous contacter pour vérifier notre zone d'intervention sur votre commune.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Contactez-<span>nous</span></h2>
             <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
@@ -2112,26 +1213,8 @@
                         <div>performancehabitat29@gmail.com</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon">👤</div>
-                        <div>
-                            <div>Votre artisan expert</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
                         <div class="info-icon">🏢</div>
-                        <div>
-                            <div>Siège social : Lieu-dit Penfeld - 29820 GUILERS</div>
-                            <div>N° SIRET: 79376856500012</div>
-                            <div>Capital social : 12 500€</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">🕒</div>
-                        <div>
-                            <div>Lundi - Vendredi : 8h00 - 18h00</div>
-                            <div>Samedi : 9h00 - 12h00</div>
-                            <div>Dimanche : Fermé</div>
-                        </div>
+                        <div>Lieu-dit Penfeld - 29820 GUILERS</div>
                     </div>
                 </div>
 
@@ -2153,22 +1236,18 @@
                             <label for="service">Service souhaité</label>
                             <select id="service" name="service" required>
                                 <option value="">Sélectionnez un service</option>
-                                <option value="salle-de-bain">Salle de bain clé en main</option>
-                                <option value="electricite">Électricité générale</option>
+                                <option value="salle-de-bain">Salle de bain</option>
+                                <option value="electricite">Électricité</option>
                                 <option value="plomberie">Plomberie</option>
                                 <option value="chauffage">Chauffage</option>
                                 <option value="pompe-chaleur">Pompe à chaleur</option>
-                                <option value="carrelage">Carrelage & sols</option>
-                                <option value="cloison">Cloisons sèches</option>
-                                <option value="peinture">Peinture</option>
-                                <option value="autre">Autre projet</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">Description de votre projet</label>
-                            <textarea id="message" name="message" placeholder="Décrivez votre projet en détail..." required></textarea>
+                            <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande de devis</button>
+                        <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
                     </form>
                 </div>
             </div>
@@ -2183,32 +1262,13 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Performance Habitat</h4>
-                    <p>Votre artisan local spécialiste en rénovation et amélioration énergétique dans le Finistère. Neuf & Rénovation.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Nos services</h4>
-                    <a href="#services">Salle de bain clé en main</a>
-                    <a href="#services">Plomberie</a>
-                    <a href="#services">Chauffage</a>
-                    <a href="#services">Électricité</a>
-                    <a href="#services">Pompes à chaleur</a>
-                    <a href="#services">Carrelage & sols</a>
-                    <a href="#services">Cloisons sèches</a>
-                    <a href="#services">Peinture</a>
+                    <p>Votre artisan local spécialiste en rénovation et amélioration énergétique dans le Finistère.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <p><strong>06 50 03 47 77</strong></p>
-                    <p>06 35 13 02 99</p>
                     <p>performancehabitat29@gmail.com</p>
                     <p>Lieu-dit Penfeld - 29820 GUILERS</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Informations légales</h4>
-                    <p>N° SIRET: 79376856500012</p>
-                    <p>Capital social : 12 500€</p>
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Politique de confidentialité</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -2217,119 +1277,47 @@
         </div>
     </footer>
 
-    <!-- Bouton flottant Instagram -->
-    <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="floating-instagram" title="Suivez-nous sur Instagram">
-        📷
-    </a>
+    <!-- MODAL GALERIE -->
+    <div id="projectGalleryModal" class="modal-gallery">
+        <div class="modal-gallery-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    Galerie <span id="projectTitle">du Projet</span>
+                </div>
+                <button class="modal-close" onclick="closeProjectGallery()">&times;</button>
+            </div>
+
+            <div class="carousel-main">
+                <img id="mainImage" src="" alt="Image principale">
+                <div class="carousel-counter">
+                    <span id="currentIndex">1</span> / <span id="totalImages">0</span>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="prevImage()">❮</button>
+                    <button class="carousel-btn" onclick="nextImage()">❯</button>
+                </div>
+            </div>
+
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Toutes les photos du projet</div>
+                <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+            </div>
+
+            <div class="modal-footer">
+                <p>Cliquez sur une vignette pour afficher l'image. Utilisez les flèches ou votre clavier pour naviguer.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
-
-        // ===== GALERIE PROJETS =====
-const projects = {
-    {% for projet in projects %}
-    '{{ projet.id }}': {
-        title: '{{ projet.titre }}',
-        images: [
-            '{{ projet.image.url }}',
-            {% for img in projet.images.all %}
-            '{{ img.image.url }}',
-            {% endfor %}
-        ]
-    },
-    {% endfor %}
-};
-
-let currentProjectId = null;
-let currentImageIndex = 0;
-
-function openProjectGallery(projectId) {
-    currentProjectId = projectId;
-    currentImageIndex = 0;
-
-    const project = projects[projectId];
-    if (!project) return;
-
-    document.getElementById('projectTitle').textContent = project.title;
-
-    const thumbnailsGrid = document.getElementById('thumbnailsGrid');
-    thumbnailsGrid.innerHTML = '';
-
-    project.images.forEach((img, index) => {
-        const thumb = document.createElement('div');
-        thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-        thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
-        thumb.onclick = () => goToImage(index);
-        thumbnailsGrid.appendChild(thumb);
-    });
-
-    displayImage(0);
-    document.getElementById('totalImages').textContent = project.images.length;
-    document.getElementById('projectGalleryModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeProjectGallery() {
-    document.getElementById('projectGalleryModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function displayImage(index) {
-    const project = projects[currentProjectId];
-    if (!project) return;
-
-    const mainImg = document.getElementById('mainImage');
-    mainImg.src = project.images[index];
-    document.getElementById('currentIndex').textContent = index + 1;
-
-    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === index);
-    });
-
-    currentImageIndex = index;
-}
-
-function nextImage() {
-    const project = projects[currentProjectId];
-    if (!project) return;
-    currentImageIndex = (currentImageIndex + 1) % project.images.length;
-    displayImage(currentImageIndex);
-}
-
-function prevImage() {
-    const project = projects[currentProjectId];
-    if (!project) return;
-    currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
-    displayImage(currentImageIndex);
-}
-
-function goToImage(index) {
-    displayImage(index);
-}
-
-// Navigation clavier
-document.addEventListener('keydown', (e) => {
-    if (document.getElementById('projectGalleryModal').classList.contains('active')) {
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-        if (e.key === 'Escape') closeProjectGallery();
-    }
-});
-
-// Fermer en cliquant hors du modal
-document.getElementById('projectGalleryModal').addEventListener('click', (e) => {
-    if (e.target.id === 'projectGalleryModal') {
-        closeProjectGallery();
-    }
-});
         // ===== SLIDER HERO =====
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slider-item');
-        const totalSlides = slides.length;
 
-        // Créer les dots
         function initSliderDots() {
             const controlsContainer = document.getElementById('sliderControls');
-            for (let i = 0; i < totalSlides; i++) {
+            controlsContainer.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
                 const dot = document.createElement('div');
                 dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
                 dot.onclick = () => goToSlide(i);
@@ -2346,12 +1334,12 @@ document.getElementById('projectGalleryModal').addEventListener('click', (e) => 
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         }
 
         function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
         }
 
@@ -2360,7 +1348,6 @@ document.getElementById('projectGalleryModal').addEventListener('click', (e) => 
             showSlide(currentSlide);
         }
 
-        // Auto-advance slider
         setInterval(nextSlide, 5000);
         initSliderDots();
 
@@ -2370,7 +1357,6 @@ document.getElementById('projectGalleryModal').addEventListener('click', (e) => 
             navMenu.classList.toggle('active');
         }
 
-        // Fermer le menu au clic sur un lien
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navMenu').classList.remove('active');
@@ -2380,185 +1366,117 @@ document.getElementById('projectGalleryModal').addEventListener('click', (e) => 
         // ===== FORMULAIRE =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Merci pour votre message ! Nous vous recontacterons rapidement pour votre devis gratuit.');
+            alert('Merci pour votre message ! Nous vous recontacterons rapidement.');
             this.reset();
         });
 
-        // ===== ANIMATION STATISTIQUES =====
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -100px 0px'
+        // ===== GALERIE PROJETS =====
+        const projects = {
+            {% for projet in projects %}
+            '{{ projet.id }}': {
+                title: '{{ projet.titre|escapejs }}',
+                images: [
+                    '{{ projet.image.url }}',
+                    {% for img in projet.images.all %}
+                    '{{ img.image.url }}',
+                    {% endfor %}
+                ]
+            },
+            {% endfor %}
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const stats = entry.target.querySelectorAll('.stat-number');
-                    stats.forEach(stat => {
-                        const text = stat.textContent;
-                        const hasPlus = text.includes('+');
-                        const hasPercent = text.includes('%');
-                        const target = parseInt(text);
-                        let current = 0;
-                        const increment = target / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                stat.textContent = target + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
-                            }
-                        }, 40);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+        let currentProjectId = null;
+        let currentImageIndex = 0;
 
-        const aboutSection = document.getElementById('apropos');
-        if (aboutSection) {
-            observer.observe(aboutSection);
+        function openProjectGallery(projectId) {
+            currentProjectId = projectId;
+            currentImageIndex = 0;
+            const project = projects[projectId];
+
+            if (!project) return;
+
+            document.getElementById('projectTitle').textContent = project.title;
+            const thumbnailsGrid = document.getElementById('thumbnailsGrid');
+            thumbnailsGrid.innerHTML = '';
+
+            project.images.forEach((img, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
+                thumb.onclick = () => goToImage(index);
+                thumbnailsGrid.appendChild(thumb);
+            });
+
+            displayImage(0);
+            document.getElementById('totalImages').textContent = project.images.length;
+            document.getElementById('projectGalleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // ===== SMOOTH SCROLL =====
+        function closeProjectGallery() {
+            document.getElementById('projectGalleryModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function displayImage(index) {
+            const project = projects[currentProjectId];
+            if (!project) return;
+
+            const mainImg = document.getElementById('mainImage');
+            mainImg.src = project.images[index];
+            document.getElementById('currentIndex').textContent = index + 1;
+
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            currentImageIndex = index;
+        }
+
+        function nextImage() {
+            const project = projects[currentProjectId];
+            if (!project) return;
+            currentImageIndex = (currentImageIndex + 1) % project.images.length;
+            displayImage(currentImageIndex);
+        }
+
+        function prevImage() {
+            const project = projects[currentProjectId];
+            if (!project) return;
+            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+            displayImage(currentImageIndex);
+        }
+
+        function goToImage(index) {
+            displayImage(index);
+        }
+
+        // Navigation clavier
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('projectGalleryModal').classList.contains('active')) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeProjectGallery();
+            }
+        });
+
+        // Fermer en cliquant hors du modal
+        document.getElementById('projectGalleryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectGalleryModal') {
+                closeProjectGallery();
+            }
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-
-        // ===== GALERIE: FILTRES =====
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Retirer la classe active
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // ===== LIGHTBOX =====
-        let currentLightboxIndex = 0;
-        const galleryPhotos = document.querySelectorAll('.gallery-item:not(.hidden)');
-
-        function openLightbox(index) {
-            currentLightboxIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCaption = document.getElementById('lightbox-caption');
-            const allItems = Array.from(document.querySelectorAll('.gallery-item'));
-            const visibleItems = allItems.filter(item => !item.classList.contains('hidden'));
-
-            if (visibleItems[index]) {
-                const img = visibleItems[index].querySelector('.gallery-img');
-                const title = visibleItems[index].querySelector('.gallery-info h4');
-
-                lightboxImg.src = img.src;
-                lightboxCaption.textContent = title ? title.textContent : '';
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeLightbox(direction) {
-            const allItems = Array.from(document.querySelectorAll('.gallery-item'));
-            const visibleItems = allItems.filter(item => !item.classList.contains('hidden'));
-
-            currentLightboxIndex += direction;
-
-            if (currentLightboxIndex < 0) {
-                currentLightboxIndex = visibleItems.length - 1;
-            } else if (currentLightboxIndex >= visibleItems.length) {
-                currentLightboxIndex = 0;
-            }
-
-            const img = visibleItems[currentLightboxIndex].querySelector('.gallery-img');
-            const title = visibleItems[currentLightboxIndex].querySelector('.gallery-info h4');
-
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
-        }
-
-        // Fermer lightbox avec Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                changeLightbox(-1);
-            } else if (e.key === 'ArrowRight') {
-                changeLightbox(1);
-            }
-        });
-
-        // Fermer lightbox en cliquant à l'extérieur
-        document.getElementById('lightbox')?.addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox') {
-                closeLightbox();
-            }
-        });
     </script>
-<!-- MODAL GALERIE PROJET -->
-<div id="projectGalleryModal" class="modal-gallery">
-    <div class="modal-gallery-content">
-        <!-- HEADER -->
-        <div class="modal-header">
-            <div>
-                <div class="modal-title">
-                    Galerie <span id="projectTitle">du Projet</span>
-                </div>
-            </div>
-            <button class="modal-close" onclick="closeProjectGallery()">&times;</button>
-        </div>
-
-        <!-- CAROUSEL PRINCIPAL -->
-        <div class="carousel-main">
-            <img id="mainImage" src="" alt="Image principale">
-            <div class="carousel-counter">
-                <span id="currentIndex">1</span> / <span id="totalImages">0</span>
-            </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" onclick="prevImage()">❮</button>
-                <button class="carousel-btn" onclick="nextImage()">❯</button>
-            </div>
-        </div>
-
-        <!-- THUMBNAILS -->
-        <div class="thumbnails-section">
-            <div class="thumbnails-title">Toutes les photos du projet</div>
-            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="modal-footer">
-            <p>Cliquez sur une vignette pour afficher l'image. Utilisez les flèches ou votre clavier pour naviguer.</p>
-        </div>
-    </div>
-</div>
 </body>
 </html>
