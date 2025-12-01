@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Habitat - Ensemble, assurons votre confort</title>
@@ -17,6 +21,22 @@
     background: rgba(0, 0, 0, 0.4); /* يمكنك الزيادة حتى 0.6 إن أردت */
     z-index: 1;
 }
+.slider-item .hero-content p,
+.slider-item .hero-content li {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.slider-item .hero-content h1,
+.slider-item .hero-content h2,
+.slider-item .hero-content h3 {
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
 
 /* جعل محتوى النص فوق الـ overlay */
 .hero-content {
@@ -49,12 +69,16 @@
             --blanc: #ffffff;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            color: var(--blanc);
-            background: var(--gris-fonce);
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    background: var(--gris-fonce);
+    overflow-x: hidden;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
 
         /* HEADER */
         .header {

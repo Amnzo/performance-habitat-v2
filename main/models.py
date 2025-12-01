@@ -56,15 +56,20 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="projects/details/")
-    #titre = models.CharField(max_length=200, blank=True, null=True)  # <-- ajoute ceci
     ordre = models.PositiveIntegerField(default=0)
+
+    # Nouveau champ pour dire si image avant/après
+    ETAT_CHOICES = [
+        ('avant', 'Avant les travaux'),
+        ('apres', 'Après les travaux'),
+    ]
+    etat = models.CharField(max_length=10, choices=ETAT_CHOICES, default='avant')
 
     class Meta:
         ordering = ["ordre"]
 
     def __str__(self):
-        return f"image {self.id}"
-
+        return f"image {self.id} - {self.get_etat_display()}"
 
 
 class Testimonial(models.Model):
