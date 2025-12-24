@@ -1,0 +1,13 @@
+# Database
+
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environnement virtuel
+venv/
+env/
+
+# Fichiers système
+*.DS_Store
