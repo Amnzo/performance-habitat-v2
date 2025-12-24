@@ -72,8 +72,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'main/static')
 ]
 
-
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -82,5 +80,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# Email – disabled (we store contact requests in DB)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# ============================================
+# CONFIGURATION EMAIL
+# ============================================
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'performancehabitat29@gmail.com'
+EMAIL_HOST_PASSWORD = 'njss eyiq rfei fmlo'
+
+# Configuration supplémentaire pour le formulaire de contact
+DEFAULT_FROM_EMAIL = 'Performance Habitat <performancehabitat29@gmail.com>'
+CONTACT_EMAIL = 'performancehabitat29@gmail.com'  # Email qui recevra les demandes
+
+# Taille maximale des fichiers uploadés
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5 Mo
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5 Mo
+
+# Types de fichiers autorisés
+ALLOWED_UPLOAD_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.pdf']
+
+# CSRF trusted origins (pour le développement local)
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]

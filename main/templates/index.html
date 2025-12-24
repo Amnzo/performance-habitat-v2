@@ -13,7 +13,7 @@
      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="header">
+    <header class="footer">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -26,13 +26,18 @@
 
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-                <div class="header-slogan">SUBLIMONS ET RÉNOVONS VOTRE HABITAT</div>
+                <div class="header-slogan-container">
+                    <div class="header-slogan">SUBLIMONS ET RÉNOVONS VOTRE HABITAT</div>
+                    <div class="header-creation-date">Entreprise créée en 2013</div>
+                </div>
+
+
 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#apropos">À propos</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#pompe-chaleur">Pompe à chaleur</a></li>
+                    <li><a href="#pompe-chaleur">Salle de bain clé en main</a></li>
                     <li><a href="#realisations">Réalisations</a></li>
                     <li><a href="#temoignages">Témoignages</a></li>
                     <li><a href="#zone">Zone</a></li>
@@ -42,6 +47,13 @@
                             Instagram
                         </a>
                     </li>
+
+                    <li>
+                    <a href="https://web.facebook.com/profile.php?id=61583620142892" target="_blank" class="nav-facebook">
+                        Facebook
+                    </a>
+</li>
+
                 </ul>
             </div>
         </div>
@@ -56,12 +68,34 @@
         <div class="slider-item active">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=600&fit=crop" alt="projet 0">
         </div>
-        <div class="slider-item">
-            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=600&fit=crop" alt="Projet 1">
+
+
+         <div class="slider-item">
+            <img src="{% static 'img/2.jpeg' %}" alt="Projet 3">
         </div>
-        <div class="slider-item">
-            <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&h=600&fit=crop" alt="Projet 2">
+         <div class="slider-item">
+             <img src="{% static 'img/4.jpg' %}" alt="Projet 3">
         </div>
+
+         <div class="slider-item">
+            <img src="{% static 'img/3.jpeg' %}" alt="Projet 3">
+        </div>
+
+
+
+         <div class="slider-item">
+             <img src="{% static 'img/s1.jpeg' %}" alt="Projet 3">
+        </div>
+
+
+
+
+
+
+
+
+
+
 
         <div class="hero-content">
             <h1>L'interlocuteur <span>unique pour tous vos travaux</span></h1>
@@ -79,7 +113,7 @@
 
 
 
-    <section id="apropos" class="section">
+    <section id="apropos" class="footer">
         <div class="container">
             <h2 class="section-title">À propos de <span>Performance Habitat</span></h2>
             <p class="section-subtitle">Votre artisan spécialiste en rénovation et amélioration énergétique</p>
@@ -87,8 +121,11 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Votre expert en rénovation</h3>
-                    <p>Performance Habitat est votre partenaire privilégié pour tous vos projets de rénovation et d'amélioration de l'habitat dans la région brestoise.</p>
-                    <p>Nous intervenons pour des projets de toutes envergures : de la simple réparation à la rénovation complète, en mettant l'accent sur la qualité des finitions et le respect de votre budget.</p>
+                    <p>Performance Habitat, entreprise de proximité créée en 2013,
+                        sera votre partenaire privilégié pour tous vos projets de rénovation et d’amélioration de l’habitat dans la région brestoise. </p>
+
+                      <p>Performance Habitat est votre interlocuteur unique pour tous vos travaux intérieurs, de A à Z : électricité, plomberie, plaques de plâtre, sols et peinture.</p>
+                    <p>Nos principaux atouts sont le professionnalisme, la satisfaction de nos clients et la proximité avec vous. </p>
                 </div>
 
                 <div class="stats-grid">
@@ -109,9 +146,9 @@
         </div>
     </section>
 
-   <section id="services" class="section section-alt">
+   <section id="services" class="footer">
         <div class="container">
-            <h2 class="section-title">Nos <span>Services</span></h2>
+            <h2 class="section-title">AVEC NOS SERVICES... <span>TOUS VOS PROJETS CLÉ EN MAIN</span></h2>
             <p class="section-subtitle">Des solutions complètes pour tous vos projets de rénovation</p>
             <div class="services-grid">
                 {% for service in services %}
@@ -140,65 +177,328 @@
         </div>
     </section>
 
-<section id="pompe-chaleur" class="section">
+<section id="pompe-chaleur" class="footer">
   <div class="container">
-    <h2 class="section-title">Pompe à <span>Chaleur</span></h2>
-    <div class="about-content">
+   <h2 class="section-title">
+  Performance Habitat, entreprise spécialisée dans
+  <span>la salle de bain clé en main</span>
+  <small> &amp; </small>
+  <span class="highlight">la salle de bain PMR</span>
+</h2>
 
+
+    <div class="about-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+
+      <!-- Partie Texte à Gauche -->
       <div class="about-text">
-        <h3 class="uppercase font-bold" style="color: var(--vert-fluo);">Pompe à Chaleur (PAC)</h3>
+        <h3 class="uppercase font-bold" style="color: var(--vert-fluo); margin-bottom: 1.5rem;">
+          Parlez-nous de vos goûts et envies, Performance Habitat s'occupe du reste
+        </h3>
 
-        <p class="text-lg">
-          <strong>Nous assurons le remplacement complet de votre ancienne pompe à chaleur</strong> :
-          dépose propre, préparation de l’espace, installation du nouveau système et mise en service.
+        <h4>
+          CONCEPTION, RÉALISATION ET CHOIX DE QUALITÉ... UNE PLUS-VALUE POUR VOTRE MAISON
+        </h4>
+
+        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">
+          <span style="color: var(--vert-fluo);">Choisir Performance Habitat</span>,
+          c'est s'assurer d'une salle de bain de qualité.
+        </h4>
+
+        <p class="text-lg" style="line-height: 1.8;">
+          En effet, nous vous proposerons et insisterons toujours sur le choix de matériaux professionnels
+          pour une salle de bain qui durera dans le temps et vous apportera un réel plaisir au quotidien.
         </p>
 
-        <p>Notre intervention inclut :</p>
-
-        <ul class="list-disc pl-5" style="color: var(--gris-clair); line-height:1.6;">
-          <li>Déconnexion et retrait sécurisé de l’ancienne installation</li>
-          <li>Démontage et évacuation des unités intérieures et extérieures</li>
-          <li>Nettoyage et préparation du nouvel emplacement</li>
-          <li>Raccordements électriques et hydraulique précis</li>
-          <li>Paramétrage, tests, et mise en service du nouveau système</li>
-        </ul>
-
-        <p class="mt-4">
-          Nous installons des systèmes <strong>Air-Air et Air-Eau</strong>, paramétrés pour offrir :
+        <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
+          Du sanitaire aux éléments de décoration, nous vous conseillerons et réfléchirons avec vous
+          à sa conception optimale, en nous adaptant au mieux à votre chez-vous.
         </p>
 
-        <ul style="color: var(--vert-fluo); font-weight:600; font-size:0.85rem; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.3rem;">
-          <li>Meilleur rendement énergétique</li>
-          <li>Fonctionnement plus silencieux</li>
-          <li>Régulation adaptée à l’habitation</li>
-          <li>Installation durable et fiable</li>
-        </ul>
-
-        <div style="background:#2a3b4c; padding: 0.9rem; border-radius: 10px; margin-top:1.2rem; text-align:center; color:var(--gris-clair); font-weight:500;">
-          🔧 <strong style="color:var(--vert-fluo);">Service :</strong> Dépose → Installation → Mise en service
-        </div>
-
+        <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
+          <strong>Une salle de bain chez Performance Habitat, c'est avant tout un endroit de paix
+          où l'on se sent bien…</strong>
+        </p>
       </div>
 
-      <div>
-        <div style="background:#34495e; padding:2rem; border-radius:15px; text-align:center; height:100%; display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-size:3.5rem; margin-bottom:1rem;">🌡️</div>
-          <h3 style="color:var(--vert-fluo); margin-bottom:0.8rem;">Installation Professionnelle</h3>
-          <p style="color:var(--gris-clair); font-size:0.95rem; font-weight:500; line-height:1.5;">
-            Un remplacement maîtrisé et une installation rigoureuse pour garantir un chauffage performant et fiable.
-          </p>
+      <!-- Galerie Images Avant/Après à Droite -->
+      <div class="bathroom-gallery">
+        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--vert-fluo); font-weight: bold;">
+          Nos Réalisations - Avant / Après
+        </h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+          <!-- Projet 1 -->
+<div class="gallery-item" onclick="openLightbox(0)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/avant1.jpeg' %}" alt="Salle de bain avant rénovation 1"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      AVANT
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(1)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+     <img src="{% static 'img/apres1.jpeg' %}"  alt="Salle de bain après rénovation 1"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      APRÈS
+    </div>
+  </div>
+</div>
+
+<!-- Projet 2 -->
+<div class="gallery-item" onclick="openLightbox(2)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/avant2.jpeg' %}" alt="Salle de bain avant rénovation 2"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      AVANT
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(3)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/apres2.jpeg' %}" alt="Salle de bain après rénovation 2"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      APRÈS...
+    </div>
+  </div>
+</div>
+
+<!-- Projet 4 -->
+<div class="gallery-item" onclick="openLightbox(4)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/avant4.jpeg' %}" alt="Salle de bain avant rénovation 4"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      AVANT
+    </div>
+  </div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(5)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/apres4.jpeg' %}" alt="Salle de bain après rénovation 4"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      APRÈS
+    </div>
+  </div>
+</div>
+
+<!-- Projet 3 -->
+<div class="gallery-item" onclick="openLightbox(6)">
+  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+    <img src="{% static 'img/avant3.jpeg' %}" alt="Salle de bain avant rénovation 3"
+         style="width: 100%; height: 200px; object-fit: cover;">
+    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      AVANT
+    </div>
+  </div>
+</div>
+
+          <div class="gallery-item" onclick="openLightbox(7)">
+            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+              <img src="{% static 'img/apres3.jpeg' %}" alt="Salle de bain après rénovation 3"
+                   style="width: 100%; height: 200px; object-fit: cover;">
+              <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,200,0,0.8); color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold;">
+                APRÈS
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </div>
+
+  <!-- Modal Lightbox pour le Diaporama -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="prev-lightbox" onclick="changeSlide(-1)">&#10094;</span>
+    <span class="next-lightbox" onclick="changeSlide(1)">&#10095;</span>
+
+    <div class="lightbox-content">
+      <img id="lightbox-image" src="" alt="">
+      <div id="lightbox-badge" class="lightbox-badge"></div>
+      <div class="lightbox-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">8</span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr !important;
+      }
+
+      .bathroom-gallery {
+        margin-top: 2rem;
+      }
+    }
+
+    .gallery-item img {
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Styles pour le Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-content {
+      position: relative;
+      margin: auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-badge {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: white;
+      z-index: 10000;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10001;
+      transition: color 0.3s;
+    }
+
+    .close-lightbox:hover {
+      color: #ff4444;
+    }
+
+    .prev-lightbox,
+    .next-lightbox {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      z-index: 10001;
+    }
+
+    .prev-lightbox:hover,
+    .next-lightbox:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev-lightbox {
+      left: 20px;
+    }
+
+    .next-lightbox {
+      right: 20px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .prev-lightbox,
+      .next-lightbox {
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .close-lightbox {
+        font-size: 40px;
+        right: 20px;
+      }
+
+      .lightbox-badge {
+        top: 70px;
+        left: 20px;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+    }
+  </style>
+
+
 </section>
 
-
-    <section id="realisations" class="section section-alt">
+    <section id="realisations" class="footer">
         <div class="container">
             <h2 class="section-title">Nos <span>Réalisations</span></h2>
-            <p class="section-subtitle">Découvrez quelques-uns de nos projets récents</p>
+
+
+
+
+             <h2 class="section-title"> <span>ENSEMBLE, ASSURONS VOTRE CONFORT  </span></h2>
+             <p class="section-subtitle">Découvrez quelques-uns de nos projets récents </p>
             <div class="realisation-grid">
                 {% for projet in projects %}
                 <div class="realisation-card" onclick="openProjectGallery('{{ projet.id }}')">
@@ -224,7 +524,7 @@
         </div>
     </section>
 
-    <section id="temoignages" class="section">
+    <section id="temoignages" class="footer">
         <div class="container">
             <h2 class="section-title">Témoignages <span>Clients</span></h2>
             <p class="section-subtitle">Ce que nos clients disent de nous</p>
@@ -244,7 +544,7 @@
         </div>
     </section>
 
-    <section id="zone" class="section section-alt">
+    <section id="zone" class="footer">
         <div class="container">
             <h2 class="section-title">Notre <span>Zone d'Intervention</span></h2>
             <div class="zone-content">
@@ -256,67 +556,86 @@
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Contactez-<span>nous</span></h2>
-            <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
+    <section id="contact" class="footer">
+    <div class="container">
+        <h2 class="section-title">Contactez-<span>nous</span></h2>
+        <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
 
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Nos coordonnées</h3>
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div>
-                            <div><strong>06 50 03 47 77</strong></div>
-                            <div>06 35 13 02 99</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">✉️</div>
-                        <div>performancehabitat29@gmail.com</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">🏢</div>
-                        <div>Lieu-dit Penfeld - 29820 GUILERS</div>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Nos coordonnées</h3>
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <div><strong>06 50 03 47 77</strong></div>
+                        <div>06 35 13 02 99</div>
                     </div>
                 </div>
-
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nom et Prénom</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service souhaité</label>
-                            <select id="service" name="service" required>
-                                <option value="">Sélectionnez un service</option>
-                                <option value="salle-de-bain">Salle de bain</option>
-                                <option value="electricite">Électricité</option>
-                                <option value="plomberie">Plomberie</option>
-                                <option value="chauffage">Chauffage</option>
-                                <option value="pompe-chaleur">Pompe à chaleur</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Description de votre projet</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
-                    </form>
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div>performancehabitat29@gmail.com</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🏢</div>
+                    <div>Lieu-dit Penfeld - 29820 GUILERS</div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <div class="contact-form">
+
+                    <form id="contactForm" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="name">Nom et Prénom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service souhaité</label>
+                        <select id="service" name="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="salle-de-bain">Salle de bain</option>
+                            <option value="electricite">Électricité</option>
+                            <option value="plomberie">Plomberie</option>
+                            <option value="chauffage">Chauffage</option>
+                            <option value="pompe-chaleur">Pompe à chaleur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Description de votre projet</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <!-- NOUVEAU : Zone de téléchargement de fichiers -->
+                    <div class="form-group">
+                        <label for="files">Photos de la pièce à rénover (optionnel)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="files" name="files[]" multiple accept="image/*,.pdf" class="file-input">
+                            <label for="files" class="file-label">
+                                <span class="file-icon">📎</span>
+                                <span class="file-text">Cliquez pour ajouter des photos</span>
+                            </label>
+                            <div id="fileList" class="file-list"></div>
+                        </div>
+                        <small class="file-info">Formats acceptés : JPG, PNG, PDF (max 5 fichiers, 5 Mo chacun)</small>
+                    </div>
+
+                    <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
+                </form>
+                <div id="formMessage"></div>
+            </div>
+        </div>
+    </div>
+</section>
     <footer class="footer">
         <div class="container">
             <div class="footer-banner">
@@ -332,6 +651,9 @@
                     <p><strong>06 50 03 47 77</strong></p>
                     <p>performancehabitat29@gmail.com</p>
                     <p>Lieu-dit Penfeld - 29820 GUILERS</p>
+
+                    <p>N° SIRET : 793 768 565 00012 / Capital social : 12 500 €</p>
+
                 </div>
             </div>
             <div class="footer-bottom">
@@ -373,173 +695,467 @@
     </div>
 
     <script>
-        // ===== SLIDER HERO =====
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slider-item');
 
-        function initSliderDots() {
-            const controlsContainer = document.getElementById('sliderControls');
-            controlsContainer.innerHTML = '';
-            for (let i = 0; i < slides.length; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(i);
-                controlsContainer.appendChild(dot);
-            }
+// ==========================================
+// SCRIPT JAVASCRIPT UNIFIÉ - PERFORMANCE HABITAT
+// ==========================================
+
+// ===== 1. SLIDER HERO (PAGE D'ACCUEIL) =====
+let heroCurrentSlide = 0;
+const heroSlides = document.querySelectorAll('.slider-item');
+
+function initSliderDots() {
+    const controlsContainer = document.getElementById('sliderControls');
+    if (!controlsContainer) return;
+
+    controlsContainer.innerHTML = '';
+    for (let i = 0; i < heroSlides.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        controlsContainer.appendChild(dot);
+    }
+}
+
+function showSlide(n) {
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    document.querySelectorAll('.slider-dot').forEach(dot => dot.classList.remove('active'));
+    heroSlides[n].classList.add('active');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (dots[n]) dots[n].classList.add('active');
+}
+
+function nextSlide() {
+    heroCurrentSlide = (heroCurrentSlide + 1) % heroSlides.length;
+    showSlide(heroCurrentSlide);
+}
+
+function prevSlide() {
+    heroCurrentSlide = (heroCurrentSlide - 1 + heroSlides.length) % heroSlides.length;
+    showSlide(heroCurrentSlide);
+}
+
+function goToSlide(n) {
+    heroCurrentSlide = n;
+    showSlide(heroCurrentSlide);
+}
+
+// Initialisation du slider hero
+if (heroSlides.length > 0) {
+    initSliderDots();
+    setInterval(nextSlide, 5000);
+}
+
+// ===== 2. MENU MOBILE =====
+function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) {
+        navMenu.classList.toggle('active');
+    }
+}
+
+// Fermeture du menu au clic sur un lien
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu) {
+            navMenu.classList.remove('active');
         }
+    });
+});
 
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            document.querySelectorAll('.slider-dot').forEach(dot => dot.classList.remove('active'));
+// ===== 3. LIGHTBOX AVANT/APRÈS (SALLE DE BAIN) =====
+const bathroomGalleryImages = [
+    { src: "{% static 'img/avant1.jpeg' %}", alt: "Salle de bain avant rénovation 1", type: "AVANT PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/apres1.jpeg' %}", alt: "Salle de bain après rénovation 1", type: "APRÈS PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/avant2.jpeg' %}", alt: "Salle de bain avant rénovation 2", type: "AVANT PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/apres2.jpeg' %}", alt: "Salle de bain après rénovation 2", type: "APRÈS PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/avant4.jpeg' %}", alt: "Salle de bain avant rénovation 4", type: "AVANT PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/apres4.jpeg' %}", alt: "Salle de bain après rénovation 4", type: "APRÈS PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/avant3.jpeg' %}", alt: "Salle de bain avant rénovation 3", type: "AVANT PASSAGE PERFORMANCE HABITAT" },
+    { src: "{% static 'img/apres3.jpeg' %}", alt: "Salle de bain après rénovation 3", type: "APRÈS PASSAGE PERFORMANCE HABITAT" }
+];
 
-            slides[n].classList.add('active');
-            document.querySelectorAll('.slider-dot')[n].classList.add('active');
+let currentLightboxIndex = 0;
+
+function openLightbox(index) {
+    currentLightboxIndex = index;
+    showLightboxSlide(currentLightboxIndex);
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function changeSlide(direction) {
+    currentLightboxIndex += (direction * 2);
+    if (currentLightboxIndex >= bathroomGalleryImages.length) {
+        currentLightboxIndex = 0;
+    } else if (currentLightboxIndex < 0) {
+        currentLightboxIndex = bathroomGalleryImages.length - 2;
+    }
+    showLightboxSlide(currentLightboxIndex);
+}
+
+function showLightboxSlide(index) {
+    const image = bathroomGalleryImages[index];
+    const nextImage = bathroomGalleryImages[index + 1];
+
+    const lightboxImage = document.getElementById('lightbox-image');
+    const currentSlideElem = document.getElementById('current-slide');
+    const totalSlidesElem = document.getElementById('total-slides');
+    const badge = document.getElementById('lightbox-badge');
+
+    if (lightboxImage) lightboxImage.src = image.src;
+    if (lightboxImage) lightboxImage.alt = image.alt;
+
+    const projectNumber = Math.floor(index / 2) + 1;
+    const totalProjects = bathroomGalleryImages.length / 2;
+
+    if (currentSlideElem) currentSlideElem.textContent = projectNumber;
+    if (totalSlidesElem) totalSlidesElem.textContent = totalProjects;
+
+    if (badge) {
+        badge.textContent = image.type;
+        if (image.type.includes('AVANT')) {
+            badge.style.background = 'rgba(255,0,0,0.8)';
+        } else {
+            badge.style.background = 'rgba(0,200,0,0.8)';
         }
+    }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+    clearTimeout(window.autoSlideTimeout);
+    if (image.type.includes('AVANT') && nextImage) {
+        window.autoSlideTimeout = setTimeout(() => {
+            currentLightboxIndex++;
+            showLightboxSlide(currentLightboxIndex);
+        }, 3000);
+    }
+}
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
+// Navigation clavier pour lightbox
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.style.display === 'block') {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'Escape') closeLightbox();
+    }
+});
 
-        function goToSlide(n) {
-            currentSlide = n;
-            showSlide(currentSlide);
-        }
+// Fermeture lightbox au clic extérieur
+const lightboxElement = document.getElementById('lightbox');
+if (lightboxElement) {
+    lightboxElement.addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+}
 
-        setInterval(nextSlide, 5000);
-        initSliderDots();
-
-        // ===== MENU MOBILE =====
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-
-        // ===== FORMULAIRE =====
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Nous vous recontacterons rapidement.');
-            this.reset();
-        });
-
-        // ===== GALERIE PROJETS =====
-        const projects = {
-            {% for projet in projects %}
-            '{{ projet.id }}': {
-                title: '{{ projet.titre|escapejs }}',
-                images: [
-                    '{{ projet.image.url }}',
-                    {% for img in projet.images.all %}
-                    '{{ img.image.url }}',
-                    {% endfor %}
-                ]
-            },
+// ===== 4. GALERIE PROJETS (RÉALISATIONS) =====
+const projects = {
+    {% for projet in projects %}
+    '{{ projet.id }}': {
+        title: '{{ projet.titre|escapejs }}',
+        images: [
+            '{{ projet.image.url }}',
+            {% for img in projet.images.all %}
+            '{{ img.image.url }}',
             {% endfor %}
-        };
+        ]
+    },
+    {% endfor %}
+};
 
-        let currentProjectId = null;
-        let currentImageIndex = 0;
+let currentProjectId = null;
+let projectCurrentImageIndex = 0;
 
-        function openProjectGallery(projectId) {
-            currentProjectId = projectId;
-            currentImageIndex = 0;
-            const project = projects[projectId];
+function openProjectGallery(projectId) {
+    currentProjectId = projectId;
+    projectCurrentImageIndex = 0;
+    const project = projects[projectId];
+    if (!project) return;
 
-            if (!project) return;
+    const projectTitleElem = document.getElementById('projectTitle');
+    if (projectTitleElem) {
+        projectTitleElem.textContent = project.title;
+    }
 
-            document.getElementById('projectTitle').textContent = project.title;
-            const thumbnailsGrid = document.getElementById('thumbnailsGrid');
-            thumbnailsGrid.innerHTML = '';
+    const thumbnailsGrid = document.getElementById('thumbnailsGrid');
+    if (thumbnailsGrid) {
+        thumbnailsGrid.innerHTML = '';
 
-            project.images.forEach((img, index) => {
-                const thumb = document.createElement('div');
-                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
-                thumb.onclick = () => goToImage(index);
-                thumbnailsGrid.appendChild(thumb);
-            });
+        project.images.forEach((img, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+            thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
+            thumb.onclick = () => goToImage(index);
+            thumbnailsGrid.appendChild(thumb);
+        });
+    }
 
-            displayImage(0);
-            document.getElementById('totalImages').textContent = project.images.length;
-            document.getElementById('projectGalleryModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+    displayImage(0);
+
+    const totalImagesElem = document.getElementById('totalImages');
+    if (totalImagesElem) {
+        totalImagesElem.textContent = project.images.length;
+    }
+
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeProjectGallery() {
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function displayImage(index) {
+    const project = projects[currentProjectId];
+    if (!project) return;
+
+    const mainImg = document.getElementById('mainImage');
+    const currentIndexElem = document.getElementById('currentIndex');
+
+    if (mainImg) {
+        mainImg.src = project.images[index];
+    }
+
+    if (currentIndexElem) {
+        currentIndexElem.textContent = index + 1;
+    }
+
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+    });
+
+    projectCurrentImageIndex = index;
+}
+
+function nextImage() {
+    const project = projects[currentProjectId];
+    if (!project) return;
+    projectCurrentImageIndex = (projectCurrentImageIndex + 1) % project.images.length;
+    displayImage(projectCurrentImageIndex);
+}
+
+function prevImage() {
+    const project = projects[currentProjectId];
+    if (!project) return;
+    projectCurrentImageIndex = (projectCurrentImageIndex - 1 + project.images.length) % project.images.length;
+    displayImage(projectCurrentImageIndex);
+}
+
+function goToImage(index) {
+    displayImage(index);
+}
+
+// Navigation clavier pour galerie projets
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'Escape') closeProjectGallery();
+    }
+});
+
+// Fermeture modal au clic extérieur
+const projectModal = document.getElementById('projectGalleryModal');
+if (projectModal) {
+    projectModal.addEventListener('click', (e) => {
+        if (e.target.id === 'projectGalleryModal') {
+            closeProjectGallery();
+        }
+    });
+}
+
+// ===== 5. SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// ===== 6. GESTION UPLOAD FICHIERS =====
+const fileInput = document.getElementById('files');
+const fileList = document.getElementById('fileList');
+let selectedFiles = [];
+
+if (fileInput) {
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+
+        if (selectedFiles.length + files.length > 5) {
+            alert('Maximum 5 fichiers autorisés');
+            return;
         }
 
-        function closeProjectGallery() {
-            document.getElementById('projectGalleryModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function displayImage(index) {
-            const project = projects[currentProjectId];
-            if (!project) return;
-
-            const mainImg = document.getElementById('mainImage');
-            mainImg.src = project.images[index];
-            document.getElementById('currentIndex').textContent = index + 1;
-
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-
-            currentImageIndex = index;
-        }
-
-        function nextImage() {
-            const project = projects[currentProjectId];
-            if (!project) return;
-            currentImageIndex = (currentImageIndex + 1) % project.images.length;
-            displayImage(currentImageIndex);
-        }
-
-        function prevImage() {
-            const project = projects[currentProjectId];
-            if (!project) return;
-            currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
-            displayImage(currentImageIndex);
-        }
-
-        function goToImage(index) {
-            displayImage(index);
-        }
-
-        // Navigation clavier
-        document.addEventListener('keydown', (e) => {
-            if (document.getElementById('projectGalleryModal').classList.contains('active')) {
-                if (e.key === 'ArrowRight') nextImage();
-                if (e.key === 'ArrowLeft') prevImage();
-                if (e.key === 'Escape') closeProjectGallery();
+        files.forEach(file => {
+            if (file.size > 5 * 1024 * 1024) {
+                alert(`${file.name} est trop volumineux (max 5 Mo)`);
+                return;
             }
+            selectedFiles.push(file);
+            displayFile(file);
         });
 
-        // Fermer en cliquant hors du modal
-        document.getElementById('projectGalleryModal').addEventListener('click', (e) => {
-            if (e.target.id === 'projectGalleryModal') {
-                closeProjectGallery();
+        updateFileLabel();
+    });
+}
+
+function displayFile(file) {
+    if (!fileList) return;
+
+    const fileItem = document.createElement('div');
+    fileItem.className = 'file-item';
+
+    const fileName = document.createElement('span');
+    fileName.className = 'file-item-name';
+    fileName.textContent = file.name;
+
+    const fileSize = document.createElement('span');
+    fileSize.className = 'file-item-size';
+    fileSize.textContent = formatFileSize(file.size);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'file-remove';
+    removeBtn.textContent = '✕';
+    removeBtn.type = 'button';
+    removeBtn.onclick = () => removeFile(file, fileItem);
+
+    fileItem.appendChild(fileName);
+    fileItem.appendChild(fileSize);
+    fileItem.appendChild(removeBtn);
+    fileList.appendChild(fileItem);
+}
+
+function removeFile(file, fileItem) {
+    selectedFiles = selectedFiles.filter(f => f !== file);
+    fileItem.remove();
+    updateFileLabel();
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'Ko', 'Mo'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+function updateFileLabel() {
+    const fileText = document.querySelector('.file-text');
+    if (fileText) {
+        if (selectedFiles.length === 0) {
+            fileText.textContent = 'Cliquez pour ajouter des photos';
+        } else {
+            fileText.textContent = `${selectedFiles.length} fichier(s) sélectionné(s)`;
+        }
+    }
+}
+
+// ===== 7. FONCTION CSRF TOKEN =====
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
+        }
+    }
+    return cookieValue;
+}
+
+// ===== 8. ENVOI FORMULAIRE CONTACT =====
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const formMessage = document.getElementById('formMessage');
+        const csrftoken = getCookie('csrftoken');
+
+        // Suppression et réajout des fichiers
+        formData.delete('files[]');
+        selectedFiles.forEach(file => {
+            formData.append('files[]', file);
         });
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+        if (formMessage) formMessage.innerHTML = '';
+
+        fetch(window.location.href, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': csrftoken
+            },
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur réseau');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (formMessage) {
+                if (data.success) {
+                    formMessage.innerHTML = `<div style="background: #4ade80; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">${data.message}</div>`;
+                    contactForm.reset();
+                    selectedFiles = [];
+                    if (fileList) fileList.innerHTML = '';
+                    updateFileLabel();
+                } else {
+                    formMessage.innerHTML = `<div style="background: #ef4444; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">${data.message}</div>`;
                 }
-            });
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Envoyer ma demande';
+        })
+        .catch(error => {
+            if (formMessage) {
+                formMessage.innerHTML = '<div style="background: #ef4444; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone au 06 50 03 47 77.</div>';
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Envoyer ma demande';
+            console.error('Erreur:', error);
         });
-    </script>
+    });
+}
+
+// ===== FIN DU SCRIPT =====
+console.log('✅ Script Performance Habitat chargé avec succès');
+</script>
+
+
+
 </body>
 </html>
