@@ -100,11 +100,119 @@ body {
             min-width: 300px;
         }
 
-        .logo-img {
-            height: 110px;
-            width: auto;
-            object-fit: contain;
-        }
+      .logo-img {
+    height: 180px; /* Augmentez cette valeur selon vos besoins */
+    width: auto;
+    object-fit: contain;
+}
+
+      /* Style pour le champ de fichier */
+.file-upload-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-label:hover {
+    background: #e9ecef;
+    border-color: #BFFF00;
+}
+
+.file-icon {
+    font-size: 24px;
+}
+
+.file-text {
+    font-size: 14px;
+    color: #495057;
+}
+
+.file-info {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.file-list {
+    margin-top: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.header-slogan-container {
+    text-align: center;      /* centre le contenu */
+    margin-top: 40px;        /* espace depuis le haut du header si besoin */
+}
+
+.header-slogan {
+    font-size: 24px;         /* taille du slogan */
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;     /* espace entre le slogan et la date */
+}
+
+.header-creation-date {
+    font-size: 18px;         /* plus petit que le slogan */
+    color: rgba(255, 255, 255, 0.8); /* texte plus léger */
+    font-style: italic;      /* style élégant */
+    letter-spacing: 1px;     /* espacement des lettres */
+}
+
+
+.file-item-name {
+    font-size: 13px;
+    color: #495057;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-item-size {
+    font-size: 12px;
+    color: #6c757d;
+    margin: 0 10px;
+}
+
+.file-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s ease;
+}
+
+.file-remove:hover {
+    background: #c82333;
+}
 
         .logo-text {
             text-align: left;
@@ -159,12 +267,21 @@ body {
             color: var(--vert-fluo);
         }
 
+
         .nav-instagram {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             padding: 0.6rem 1.2rem !important;
             border-radius: 10px;
             font-size: 1.3rem;
         }
+
+        .nav-facebook {
+    background: linear-gradient(45deg, #1877F2 0%, #0F5BD8 100%);
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    color: white;
+}
 
         .menu-toggle {
             display: none;
@@ -927,13 +1044,8 @@ body {
                 font-size: 0.95rem;
             }
 
-            .logo-img {
-                height: 70px;
-            }
 
-            .logo-title {
-                font-size: 1.2rem;
-            }
+
 
             .services-grid,
             .realisation-grid,
