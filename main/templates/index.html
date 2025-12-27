@@ -2,15 +2,132 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-
+    <!-- ===== MÉTADONNÉES DE BASE ===== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performance Habitat - Ensemble, assurons votre confort</title>
-     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ===== TITRE & DESCRIPTION (TRÈS IMPORTANT) ===== -->
+    <title>Performance Habitat - Rénovation Salle de Bain & Travaux Brest | Plomberie Électricité Finistère</title>
+    <meta name="description" content="Performance Habitat : votre artisan expert en rénovation de salle de bain, plomberie, électricité et chauffage à Brest et dans le Finistère. Devis gratuit ☎ 06 50 03 47 77">
+
+    <!-- ===== MOTS-CLÉS (moins important mais utile) ===== -->
+    <meta name="keywords" content="rénovation salle de bain Brest, plomberie Finistère, électricité Guilers, chauffage Plouzané, artisan Brest, travaux rénovation 29, pompe à chaleur Finistère, salle de bain PMR">
+
+    <!-- ===== INFORMATIONS AUTEUR & COPYRIGHT ===== -->
+    <meta name="author" content="Performance Habitat">
+    <meta name="copyright" content="Performance Habitat 2024">
+    <meta name="robots" content="index, follow">
+
+    <!-- ===== GÉOLOCALISATION (TRÈS IMPORTANT pour SEO local) ===== -->
+    <meta name="geo.region" content="FR-29">
+    <meta name="geo.placename" content="Guilers, Brest, Finistère">
+    <meta name="geo.position" content="48.4167;-4.5583">
+    <meta name="ICBM" content="48.4167, -4.5583">
+
+    <!-- ===== OPEN GRAPH (pour Facebook, LinkedIn) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Performance Habitat - Rénovation & Travaux Brest Finistère">
+    <meta property="og:description" content="Votre artisan expert en rénovation : salle de bain, plomberie, électricité, chauffage. Devis gratuit ☎ 06 50 03 47 77">
+    <meta property="og:url" content="https://www.votresite.com">
+    <meta property="og:image" content="{% static 'img/logo.png' %}">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Performance Habitat">
+
+    <!-- ===== TWITTER CARDS ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Performance Habitat - Rénovation Brest">
+    <meta name="twitter:description" content="Artisan expert en rénovation salle de bain, plomberie, électricité dans le Finistère">
+    <meta name="twitter:image" content="{% static 'img/logo.png' %}">
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- ===== CANONICAL (évite contenu dupliqué) ===== -->
+    <link rel="canonical" href="https://www.votresite.com/">
+
+    <!-- ===== DONNÉES STRUCTURÉES JSON-LD (Google Business) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Performance Habitat",
+      "image": "{% static 'img/logo.png' %}",
+      "description": "Artisan spécialisé en rénovation de salle de bain, plomberie, électricité et chauffage",
+      "@id": "https://www.votresite.com",
+      "url": "https://www.votresite.com",
+      "telephone": "+33650034777",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lieu-dit Penfeld",
+        "addressLocality": "Guilers",
+        "postalCode": "29820",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.4167,
+        "longitude": -4.5583
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/performancehabitat29/",
+        "https://web.facebook.com/profile.php?id=61583620142892"
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Brest"
+        },
+        {
+          "@type": "City",
+          "name": "Guilers"
+        },
+        {
+          "@type": "City",
+          "name": "Plouzané"
+        },
+        {
+          "@type": "City",
+          "name": "Le Relecq-Kerhuon"
+        }
+      ],
+      "foundingDate": "2013",
+      "founder": {
+        "@type": "Person",
+        "name": "Performance Habitat"
+      }
+    }
+    </script>
+
+    <!-- ===== GOOGLE FONTS ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- ===== STYLES ===== -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- ===== GOOGLE ANALYTICS (À AJOUTER) ===== -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
     <header class="footer">
