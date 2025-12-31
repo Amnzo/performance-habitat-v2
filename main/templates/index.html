@@ -2,30 +2,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- ===== MÉTADONNÉES DE BASE ===== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- ===== TITRE & DESCRIPTION (TRÈS IMPORTANT) ===== -->
     <title>Performance Habitat - Rénovation Salle de Bain & Travaux Brest | Plomberie Électricité Finistère</title>
     <meta name="description" content="Performance Habitat : votre artisan expert en rénovation de salle de bain, plomberie, électricité et chauffage à Brest et dans le Finistère. Devis gratuit ☎ 06 50 03 47 77">
-
-    <!-- ===== MOTS-CLÉS (moins important mais utile) ===== -->
     <meta name="keywords" content="rénovation salle de bain Brest, plomberie Finistère, électricité Guilers, chauffage Plouzané, artisan Brest, travaux rénovation 29, pompe à chaleur Finistère, salle de bain PMR">
-
-    <!-- ===== INFORMATIONS AUTEUR & COPYRIGHT ===== -->
     <meta name="author" content="Performance Habitat">
     <meta name="copyright" content="Performance Habitat 2024">
     <meta name="robots" content="index, follow">
-
-    <!-- ===== GÉOLOCALISATION (TRÈS IMPORTANT pour SEO local) ===== -->
     <meta name="geo.region" content="FR-29">
     <meta name="geo.placename" content="Guilers, Brest, Finistère">
     <meta name="geo.position" content="48.4167;-4.5583">
     <meta name="ICBM" content="48.4167, -4.5583">
 
-    <!-- ===== OPEN GRAPH (pour Facebook, LinkedIn) ===== -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Performance Habitat - Rénovation & Travaux Brest Finistère">
     <meta property="og:description" content="Votre artisan expert en rénovation : salle de bain, plomberie, électricité, chauffage. Devis gratuit ☎ 06 50 03 47 77">
@@ -34,20 +24,15 @@
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Performance Habitat">
 
-    <!-- ===== TWITTER CARDS ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Performance Habitat - Rénovation Brest">
     <meta name="twitter:description" content="Artisan expert en rénovation salle de bain, plomberie, électricité dans le Finistère">
     <meta name="twitter:image" content="{% static 'img/logo.png' %}">
 
-    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
-
-    <!-- ===== CANONICAL (évite contenu dupliqué) ===== -->
     <link rel="canonical" href="https://www.votresite.com/">
 
-    <!-- ===== DONNÉES STRUCTURÉES JSON-LD (Google Business) ===== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -113,14 +98,9 @@
     }
     </script>
 
-    <!-- ===== GOOGLE FONTS ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- ===== STYLES ===== -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- ===== GOOGLE ANALYTICS (À AJOUTER) ===== -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -130,106 +110,98 @@
     </script>
 </head>
 <body>
-    <header class="footer">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="{% static 'img/logo.png' %}" alt="Performance Habitat Logo" class="logo-img">
-                    <div class="logo-text">
-                        <div class="logo-title">Performance <span>Habitat</span></div>
-                        <div class="logo-subtitle">NEUF & RÉNOVATION - Ensemble, assurons votre confort</div>
-                    </div>
+    <!-- HEADER -->
+    <!-- HEADER -->
+<header class="footer">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Performance Habitat Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-title">Performance <span>Habitat</span></div>
+                    <div class="logo-subtitle">NEUF & RÉNOVATION - Ensemble, assurons votre confort</div>
                 </div>
+            </div>
 
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <!-- Bouton menu burger -->
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <span>☰</span>
+            </button>
 
-                <div class="header-slogan-container">
-                    <div class="header-slogan">SUBLIMONS ET RÉNOVONS VOTRE HABITAT</div>
-                    <div class="header-creation-date">Entreprise créée en 2013</div>
-                </div>
+            <!-- Slogan (TOUJOURS VISIBLE avec le même style) -->
+            <div class="header-slogan-container">
+                <div class="header-slogan">SUBLIMONS ET RÉNOVONS VOTRE HABITAT</div>
+                <div class="header-creation-date">Entreprise créée en 2013</div>
+            </div>
 
-
-
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#pompe-chaleur">Salle de bain clé en main</a></li>
-                    <li><a href="#realisations">Réalisations</a></li>
-                    <li><a href="#temoignages">Témoignages</a></li>
-                    <li><a href="#zone">Zone</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li>
-                        <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="nav-instagram">
-                            Instagram
-                        </a>
-                    </li>
-
-                    <li>
+            <!-- Navigation -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pompe-chaleur">Salle de bain clé en main</a></li>
+                <li><a href="#realisations">Réalisations</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#zone">Zone</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="https://www.instagram.com/performancehabitat29/" target="_blank" class="nav-instagram">
+                        Instagram
+                    </a>
+                </li>
+                <li>
                     <a href="https://web.facebook.com/profile.php?id=61583620142892" target="_blank" class="nav-facebook">
                         Facebook
                     </a>
-</li>
-
-                </ul>
-            </div>
+                </li>
+            </ul>
         </div>
-    </header>
-
-   <section id="accueil" class="hero">
-    <div class="slider-container">
-
-        <!-- Overlay sombre -->
-        <div class="slider-overlay"></div>
-
-        <div class="slider-item active">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=600&fit=crop" alt="projet 0">
-        </div>
-
-
-         <div class="slider-item">
-            <img src="{% static 'img/2.jpeg' %}" alt="Projet 3">
-        </div>
-         <div class="slider-item">
-             <img src="{% static 'img/4.jpg' %}" alt="Projet 3">
-        </div>
-
-         <div class="slider-item">
-            <img src="{% static 'img/3.jpeg' %}" alt="Projet 3">
-        </div>
-
-
-
-         <div class="slider-item">
-             <img src="{% static 'img/s1.jpeg' %}" alt="Projet 3">
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div class="hero-content">
-            <h1>L'interlocuteur <span>unique pour tous vos travaux</span></h1>
-           <p class="services">Plomberie - Chauffage - Électricité - Carrelage & Sols - Cloisons Sèches - Peinture</p>
-
-            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Demander un devis gratuit</button>
-        </div>
-
-        <div class="slider-controls" id="sliderControls"></div>
-        <div class="slider-arrow slider-prev" onclick="prevSlide()">❮</div>
-        <div class="slider-arrow slider-next" onclick="nextSlide()">❯</div>
-
     </div>
-</section>
+</header>
 
+<!-- Overlay pour menu mobile -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
+    <!-- HERO SLIDER -->
+    <section id="accueil" class="hero">
+        <div class="slider-container">
+            <!-- Overlay sombre -->
+            <div class="slider-overlay"></div>
 
+            <div class="slider-item active">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=600&fit=crop" alt="projet 0">
+            </div>
+
+            <div class="slider-item">
+                <img src="{% static 'img/2.jpeg' %}" alt="Projet 2">
+            </div>
+
+            <div class="slider-item">
+                <img src="{% static 'img/4.jpg' %}" alt="Projet 4">
+            </div>
+
+            <div class="slider-item">
+                <img src="{% static 'img/3.jpeg' %}" alt="Projet 3">
+            </div>
+
+            <div class="slider-item">
+                <img src="{% static 'img/s1.jpeg' %}" alt="Projet 1">
+            </div>
+
+            <div class="hero-content">
+                <h1>L'interlocuteur <span>unique pour tous vos travaux</span></h1>
+                <p class="services">Plomberie - Chauffage - Électricité - Carrelage & Sols - Cloisons Sèches - Peinture</p>
+                <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Demander un devis gratuit</button>
+            </div>
+
+            <div class="slider-controls" id="sliderControls"></div>
+            <div class="slider-arrow slider-prev" onclick="prevSlide()">❮</div>
+            <div class="slider-arrow slider-next" onclick="nextSlide()">❯</div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
     <section id="apropos" class="footer">
         <div class="container">
             <h2 class="section-title">À propos de <span>Performance Habitat</span></h2>
@@ -239,10 +211,9 @@
                 <div class="about-text">
                     <h3>Votre expert en rénovation</h3>
                     <p>Performance Habitat, entreprise de proximité créée en 2013,
-                        sera votre partenaire privilégié pour tous vos projets de rénovation et d’amélioration de l’habitat dans la région brestoise. </p>
-
-                      <p>Performance Habitat est votre interlocuteur unique pour tous vos travaux intérieurs, de A à Z : électricité, plomberie, plaques de plâtre, sols et peinture.</p>
-                    <p>Nos principaux atouts sont le professionnalisme, la satisfaction de nos clients et la proximité avec vous. </p>
+                        sera votre partenaire privilégié pour tous vos projets de rénovation et d'amélioration de l'habitat dans la région brestoise.</p>
+                    <p>Performance Habitat est votre interlocuteur unique pour tous vos travaux intérieurs, de A à Z : électricité, plomberie, plaques de plâtre, sols et peinture.</p>
+                    <p>Nos principaux atouts sont le professionnalisme, la satisfaction de nos clients et la proximité avec vous.</p>
                 </div>
 
                 <div class="stats-grid">
@@ -263,7 +234,8 @@
         </div>
     </section>
 
-   <section id="services" class="footer">
+    <!-- SERVICES -->
+    <section id="services" class="footer">
         <div class="container">
             <h2 class="section-title">AVEC NOS SERVICES... <span>TOUS VOS PROJETS CLÉ EN MAIN</span></h2>
             <p class="section-subtitle">Des solutions complètes pour tous vos projets de rénovation</p>
@@ -294,328 +266,137 @@
         </div>
     </section>
 
-<section id="pompe-chaleur" class="footer">
-  <div class="container">
-   <h2 class="section-title">
-  Performance Habitat, entreprise spécialisée dans
-  <span>la salle de bain clé en main</span>
-  <small> &amp; </small>
-  <span class="highlight">la salle de bain PMR</span>
-</h2>
+    <!-- SALLE DE BAIN -->
+    <section id="pompe-chaleur" class="footer">
+        <div class="container">
+            <h2 class="section-title">
+                Performance Habitat, entreprise spécialisée dans
+                <span>la salle de bain clé en main</span>
+                <small> &amp; </small>
+                <span class="highlight">la salle de bain PMR</span>
+            </h2>
 
+            <div class="pompe-chaleur-content">
+                <!-- Partie Texte à Gauche -->
+                <div class="pompe-chaleur-text">
+                    <h3 class="uppercase font-bold">Parlez-nous de vos goûts et envies, Performance Habitat s'occupe du reste</h3>
 
-    <div class="about-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                    <h4>CONCEPTION, RÉALISATION ET CHOIX DE QUALITÉ... UNE PLUS-VALUE POUR VOTRE MAISON</h4>
 
-      <!-- Partie Texte à Gauche -->
-      <div class="about-text">
-        <h3 class="uppercase font-bold" style="color: var(--vert-fluo); margin-bottom: 1.5rem;">
-          Parlez-nous de vos goûts et envies, Performance Habitat s'occupe du reste
-        </h3>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">
+                        <span style="color: var(--vert-fluo);">Choisir Performance Habitat</span>,
+                        c'est s'assurer d'une salle de bain de qualité.
+                    </h4>
 
-        <h4>
-          CONCEPTION, RÉALISATION ET CHOIX DE QUALITÉ... UNE PLUS-VALUE POUR VOTRE MAISON
-        </h4>
+                    <p class="text-lg" style="line-height: 1.8;">
+                        En effet, nous vous proposerons et insisterons toujours sur le choix de matériaux professionnels
+                        pour une salle de bain qui durera dans le temps et vous apportera un réel plaisir au quotidien.
+                    </p>
 
-        <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">
-          <span style="color: var(--vert-fluo);">Choisir Performance Habitat</span>,
-          c'est s'assurer d'une salle de bain de qualité.
-        </h4>
+                    <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
+                        Du sanitaire aux éléments de décoration, nous vous conseillerons et réfléchirons avec vous
+                        à sa conception optimale, en nous adaptant au mieux à votre chez-vous.
+                    </p>
 
-        <p class="text-lg" style="line-height: 1.8;">
-          En effet, nous vous proposerons et insisterons toujours sur le choix de matériaux professionnels
-          pour une salle de bain qui durera dans le temps et vous apportera un réel plaisir au quotidien.
-        </p>
+                    <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
+                        <strong>Une salle de bain chez Performance Habitat, c'est avant tout un endroit de paix
+                        où l'on se sent bien…</strong>
+                    </p>
+                </div>
 
-        <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
-          Du sanitaire aux éléments de décoration, nous vous conseillerons et réfléchirons avec vous
-          à sa conception optimale, en nous adaptant au mieux à votre chez-vous.
-        </p>
+                <!-- Galerie Images Avant/Après à Droite -->
+                <div class="bathroom-gallery">
+                    <h3>Nos Réalisations - Avant / Après</h3>
 
-        <p class="text-lg" style="line-height: 1.8; margin-top: 1rem;">
-          <strong>Une salle de bain chez Performance Habitat, c'est avant tout un endroit de paix
-          où l'on se sent bien…</strong>
-        </p>
-      </div>
+                    <div class="gallery-grid">
+                        <!-- Projet 1 -->
+                        <div class="gallery-item" onclick="openLightbox(0)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/avant1.jpeg' %}" alt="Salle de bain avant rénovation 1">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    AVANT
+                                </div>
+                            </div>
+                        </div>
 
-      <!-- Galerie Images Avant/Après à Droite -->
-      <div class="bathroom-gallery">
-        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--vert-fluo); font-weight: bold;">
-          Nos Réalisations - Avant / Après
-        </h3>
+                        <div class="gallery-item" onclick="openLightbox(1)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/apres1.jpeg' %}" alt="Salle de bain après rénovation 1">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    APRÈS
+                                </div>
+                            </div>
+                        </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <!-- Projet 2 -->
+                        <div class="gallery-item" onclick="openLightbox(2)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/avant2.jpeg' %}" alt="Salle de bain avant rénovation 2">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    AVANT
+                                </div>
+                            </div>
+                        </div>
 
-          <!-- Projet 1 -->
-<div class="gallery-item" onclick="openLightbox(0)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/avant1.jpeg' %}" alt="Salle de bain avant rénovation 1"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      AVANT
-    </div>
-  </div>
-</div>
+                        <div class="gallery-item" onclick="openLightbox(3)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/apres2.jpeg' %}" alt="Salle de bain après rénovation 2">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    APRÈS...
+                                </div>
+                            </div>
+                        </div>
 
-<div class="gallery-item" onclick="openLightbox(1)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-     <img src="{% static 'img/apres1.jpeg' %}"  alt="Salle de bain après rénovation 1"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      APRÈS
-    </div>
-  </div>
-</div>
+                        <!-- Projet 3 -->
+                        <div class="gallery-item" onclick="openLightbox(4)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/avant4.jpeg' %}" alt="Salle de bain avant rénovation 4">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    AVANT
+                                </div>
+                            </div>
+                        </div>
 
-<!-- Projet 2 -->
-<div class="gallery-item" onclick="openLightbox(2)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/avant2.jpeg' %}" alt="Salle de bain avant rénovation 2"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      AVANT
-    </div>
-  </div>
-</div>
+                        <div class="gallery-item" onclick="openLightbox(5)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/apres4.jpeg' %}" alt="Salle de bain après rénovation 4">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    APRÈS
+                                </div>
+                            </div>
+                        </div>
 
-<div class="gallery-item" onclick="openLightbox(3)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/apres2.jpeg' %}" alt="Salle de bain après rénovation 2"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      APRÈS...
-    </div>
-  </div>
-</div>
+                        <!-- Projet 4 -->
+                        <div class="gallery-item" onclick="openLightbox(6)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/avant3.jpeg' %}" alt="Salle de bain avant rénovation 3">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    AVANT
+                                </div>
+                            </div>
+                        </div>
 
-<!-- Projet 4 -->
-<div class="gallery-item" onclick="openLightbox(4)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/avant4.jpeg' %}" alt="Salle de bain avant rénovation 4"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      AVANT
-    </div>
-  </div>
-</div>
-
-<div class="gallery-item" onclick="openLightbox(5)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/apres4.jpeg' %}" alt="Salle de bain après rénovation 4"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      APRÈS
-    </div>
-  </div>
-</div>
-
-<!-- Projet 3 -->
-<div class="gallery-item" onclick="openLightbox(6)">
-  <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-    <img src="{% static 'img/avant3.jpeg' %}" alt="Salle de bain avant rénovation 3"
-         style="width: 100%; height: 200px; object-fit: cover;">
-    <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-      AVANT
-    </div>
-  </div>
-</div>
-
-          <div class="gallery-item" onclick="openLightbox(7)">
-            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-              <img src="{% static 'img/apres3.jpeg' %}" alt="Salle de bain après rénovation 3"
-                   style="width: 100%; height: 200px; object-fit: cover;">
-              <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,200,0,0.8); color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold;">
-                APRÈS
-              </div>
+                        <div class="gallery-item" onclick="openLightbox(7)">
+                            <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                                <img src="{% static 'img/apres3.jpeg' %}" alt="Salle de bain après rénovation 3">
+                                <div style="position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                                    APRÈS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
         </div>
-      </div>
+    </section>
 
-    </div>
-  </div>
-
-  <!-- Modal Lightbox pour le Diaporama -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    <span class="prev-lightbox" onclick="changeSlide(-1)">&#10094;</span>
-    <span class="next-lightbox" onclick="changeSlide(1)">&#10095;</span>
-
-    <div class="lightbox-content">
-      <img id="lightbox-image" src="" alt="">
-      <div id="lightbox-badge" class="lightbox-badge"></div>
-      <div class="lightbox-counter">
-        <span id="current-slide">1</span> / <span id="total-slides">8</span>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    @media (max-width: 768px) {
-      .about-content {
-        grid-template-columns: 1fr !important;
-      }
-
-      .bathroom-gallery {
-        margin-top: 2rem;
-      }
-    }
-
-    .gallery-item img {
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Styles pour le Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      animation: fadeIn 0.3s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .lightbox-content {
-      position: relative;
-      margin: auto;
-      padding: 20px;
-      width: 90%;
-      max-width: 1200px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    #lightbox-image {
-      max-width: 100%;
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .lightbox-badge {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: white;
-      z-index: 10000;
-    }
-
-    .close-lightbox {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      color: white;
-      font-size: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 10001;
-      transition: color 0.3s;
-    }
-
-    .close-lightbox:hover {
-      color: #ff4444;
-    }
-
-    .prev-lightbox,
-    .next-lightbox {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      z-index: 10001;
-    }
-
-    .prev-lightbox:hover,
-    .next-lightbox:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .prev-lightbox {
-      left: 20px;
-    }
-
-    .next-lightbox {
-      right: 20px;
-    }
-
-    .lightbox-counter {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.2rem;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 25px;
-    }
-
-    @media (max-width: 768px) {
-      .prev-lightbox,
-      .next-lightbox {
-        font-size: 30px;
-        width: 50px;
-        height: 50px;
-      }
-
-      .close-lightbox {
-        font-size: 40px;
-        right: 20px;
-      }
-
-      .lightbox-badge {
-        top: 70px;
-        left: 20px;
-        font-size: 0.9rem;
-        padding: 8px 15px;
-      }
-    }
-  </style>
-
-
-</section>
-
+    <!-- RÉALISATIONS -->
     <section id="realisations" class="footer">
         <div class="container">
             <h2 class="section-title">Nos <span>Réalisations</span></h2>
+            <h2 class="section-title"> <span>ENSEMBLE, ASSURONS VOTRE CONFORT</span></h2>
+            <p class="section-subtitle">Découvrez quelques-uns de nos projets récents</p>
 
-
-
-
-             <h2 class="section-title"> <span>ENSEMBLE, ASSURONS VOTRE CONFORT  </span></h2>
-             <p class="section-subtitle">Découvrez quelques-uns de nos projets récents </p>
             <div class="realisation-grid">
                 {% for projet in projects %}
                 <div class="realisation-card" onclick="openProjectGallery('{{ projet.id }}')">
@@ -641,6 +422,7 @@
         </div>
     </section>
 
+    <!-- TÉMOIGNAGES -->
     <section id="temoignages" class="footer">
         <div class="container">
             <h2 class="section-title">Témoignages <span>Clients</span></h2>
@@ -661,98 +443,98 @@
         </div>
     </section>
 
+    <!-- ZONE D'INTERVENTION -->
     <section id="zone" class="footer">
         <div class="container">
             <h2 class="section-title">Notre <span>Zone d'Intervention</span></h2>
             <div class="zone-content">
-                <p>Nous intervenons principalement dans le Finistère et ses alentours :</p>
-                <div style="background: var(--vert-fluo); color: var(--gris-fonce); padding: 2rem; border-radius: 15px; font-weight: 700; margin: 2rem 0;">
+                <p style="text-align: center; margin-bottom: 1.5rem; color: var(--gris-clair);">Nous intervenons principalement dans le Finistère et ses alentours :</p>
+                <div style="background: var(--vert-fluo); color: var(--gris-fonce); padding: 2rem; border-radius: 15px; font-weight: 700; margin: 2rem 0; text-align: center; line-height: 1.6;">
                     BREST • GUILERS • PLOUZANÉ • LE RELECQ-KERHUON • BOHARS • GOUESNOU • PLABENNEC • LANNILIS
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="footer">
-    <div class="container">
-        <h2 class="section-title">Contactez-<span>nous</span></h2>
-        <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
+        <div class="container">
+            <h2 class="section-title">Contactez-<span>nous</span></h2>
+            <p class="section-subtitle">Demandez votre devis gratuit et sans engagement</p>
 
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h3>Nos coordonnées</h3>
-                <div class="info-item">
-                    <div class="info-icon">📞</div>
-                    <div>
-                        <div><strong>06 50 03 47 77</strong></div>
-                        <div>06 35 13 02 99</div>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">✉️</div>
-                    <div>performancehabitat29@gmail.com</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">🏢</div>
-                    <div>Lieu-dit Penfeld - 29820 GUILERS</div>
-                </div>
-            </div>
-
-            <div class="contact-form">
-
-                    <form id="contactForm" method="post" enctype="multipart/form-data">
-
-                    {% csrf_token %}
-
-                    <div class="form-group">
-                        <label for="name">Nom et Prénom</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service souhaité</label>
-                        <select id="service" name="service" required>
-                            <option value="">Sélectionnez un service</option>
-                            <option value="salle-de-bain">Salle de bain</option>
-                            <option value="electricite">Électricité</option>
-                            <option value="plomberie">Plomberie</option>
-                            <option value="chauffage">Chauffage</option>
-                            <option value="pompe-chaleur">Pompe à chaleur</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Description de votre projet</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <!-- NOUVEAU : Zone de téléchargement de fichiers -->
-                    <div class="form-group">
-                        <label for="files">Photos de la pièce à rénover (optionnel)</label>
-                        <div class="file-upload-wrapper">
-                            <input type="file" id="files" name="files[]" multiple accept="image/*,.pdf" class="file-input">
-                            <label for="files" class="file-label">
-                                <span class="file-icon">📎</span>
-                                <span class="file-text">Cliquez pour ajouter des photos</span>
-                            </label>
-                            <div id="fileList" class="file-list"></div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <div><strong>06 50 03 47 77</strong></div>
+                            <div>06 35 13 02 99</div>
                         </div>
-                        <small class="file-info">Formats acceptés : JPG, PNG, PDF (max 5 fichiers, 5 Mo chacun)</small>
                     </div>
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div>performancehabitat29@gmail.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🏢</div>
+                        <div>Lieu-dit Penfeld - 29820 GUILERS</div>
+                    </div>
+                </div>
 
-                    <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
-                </form>
-                <div id="formMessage"></div>
+                <div class="contact-form">
+                    <form id="contactForm" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Nom et Prénom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service souhaité</label>
+                            <select id="service" name="service" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="salle-de-bain">Salle de bain</option>
+                                <option value="electricite">Électricité</option>
+                                <option value="plomberie">Plomberie</option>
+                                <option value="chauffage">Chauffage</option>
+                                <option value="pompe-chaleur">Pompe à chaleur</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Description de votre projet</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="files">Photos de la pièce à rénover (optionnel)</label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="files" name="files[]" multiple accept="image/*,.pdf" class="file-input">
+                                <label for="files" class="file-label">
+                                    <span class="file-icon">📎</span>
+                                    <span class="file-text">Cliquez pour ajouter des photos</span>
+                                </label>
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+                            <small class="file-info">Formats acceptés : JPG, PNG, PDF (max 5 fichiers, 5 Mo chacun)</small>
+                        </div>
+
+                        <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
+                    </form>
+                    <div id="formMessage"></div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-banner">
@@ -768,9 +550,7 @@
                     <p><strong>06 50 03 47 77</strong></p>
                     <p>performancehabitat29@gmail.com</p>
                     <p>Lieu-dit Penfeld - 29820 GUILERS</p>
-
                     <p>N° SIRET : 793 768 565 00012 / Capital social : 12 500 €</p>
-
                 </div>
             </div>
             <div class="footer-bottom">
@@ -779,7 +559,7 @@
         </div>
     </footer>
 
-    <!-- MODAL GALERIE -->
+    <!-- MODAL GALERIE PROJETS -->
     <div id="projectGalleryModal" class="modal-gallery">
         <div class="modal-gallery-content">
             <div class="modal-header">
@@ -811,13 +591,48 @@
         </div>
     </div>
 
+    <!-- LIGHTBOX AVANT/APRÈS -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <span class="prev-lightbox" onclick="changeSlide(-1)">&#10094;</span>
+        <span class="next-lightbox" onclick="changeSlide(1)">&#10095;</span>
+
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-badge" class="lightbox-badge"></div>
+            <div class="lightbox-counter">
+                <span id="current-slide">1</span> / <span id="total-slides">8</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT -->
     <script>
+// ===== 1. MENU BURGER =====
+function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-// ==========================================
-// SCRIPT JAVASCRIPT UNIFIÉ - PERFORMANCE HABITAT
-// ==========================================
+    navMenu.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+}
 
-// ===== 1. SLIDER HERO (PAGE D'ACCUEIL) =====
+function closeMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Ferme le menu au clic sur un lien
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+// ===== 2. SLIDER HERO =====
 let heroCurrentSlide = 0;
 const heroSlides = document.querySelectorAll('.slider-item');
 
@@ -863,25 +678,7 @@ if (heroSlides.length > 0) {
     setInterval(nextSlide, 5000);
 }
 
-// ===== 2. MENU MOBILE =====
-function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    if (navMenu) {
-        navMenu.classList.toggle('active');
-    }
-}
-
-// Fermeture du menu au clic sur un lien
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        const navMenu = document.getElementById('navMenu');
-        if (navMenu) {
-            navMenu.classList.remove('active');
-        }
-    });
-});
-
-// ===== 3. LIGHTBOX AVANT/APRÈS (SALLE DE BAIN) =====
+// ===== 3. LIGHTBOX AVANT/APRÈS =====
 const bathroomGalleryImages = [
     { src: "{% static 'img/avant1.jpeg' %}", alt: "Salle de bain avant rénovation 1", type: "AVANT PASSAGE PERFORMANCE HABITAT" },
     { src: "{% static 'img/apres1.jpeg' %}", alt: "Salle de bain après rénovation 1", type: "APRÈS PASSAGE PERFORMANCE HABITAT" },
@@ -914,18 +711,17 @@ function closeLightbox() {
 }
 
 function changeSlide(direction) {
-    currentLightboxIndex += (direction * 2);
+    currentLightboxIndex += direction;
     if (currentLightboxIndex >= bathroomGalleryImages.length) {
         currentLightboxIndex = 0;
     } else if (currentLightboxIndex < 0) {
-        currentLightboxIndex = bathroomGalleryImages.length - 2;
+        currentLightboxIndex = bathroomGalleryImages.length - 1;
     }
     showLightboxSlide(currentLightboxIndex);
 }
 
 function showLightboxSlide(index) {
     const image = bathroomGalleryImages[index];
-    const nextImage = bathroomGalleryImages[index + 1];
 
     const lightboxImage = document.getElementById('lightbox-image');
     const currentSlideElem = document.getElementById('current-slide');
@@ -935,173 +731,17 @@ function showLightboxSlide(index) {
     if (lightboxImage) lightboxImage.src = image.src;
     if (lightboxImage) lightboxImage.alt = image.alt;
 
-    const projectNumber = Math.floor(index / 2) + 1;
-    const totalProjects = bathroomGalleryImages.length / 2;
-
-    if (currentSlideElem) currentSlideElem.textContent = projectNumber;
-    if (totalSlidesElem) totalSlidesElem.textContent = totalProjects;
+    if (currentSlideElem) currentSlideElem.textContent = index + 1;
+    if (totalSlidesElem) totalSlidesElem.textContent = bathroomGalleryImages.length;
 
     if (badge) {
         badge.textContent = image.type;
-        if (image.type.includes('AVANT')) {
-            badge.style.background = 'rgba(255,0,0,0.8)';
-        } else {
-            badge.style.background = 'rgba(0,200,0,0.8)';
-        }
-    }
-
-    clearTimeout(window.autoSlideTimeout);
-    if (image.type.includes('AVANT') && nextImage) {
-        window.autoSlideTimeout = setTimeout(() => {
-            currentLightboxIndex++;
-            showLightboxSlide(currentLightboxIndex);
-        }, 3000);
+        badge.style.background = image.type.includes('AVANT') ?
+            'rgba(255,0,0,0.8)' : 'rgba(0,200,0,0.8)';
     }
 }
 
-// Navigation clavier pour lightbox
-document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox && lightbox.style.display === 'block') {
-        if (e.key === 'ArrowRight') changeSlide(1);
-        if (e.key === 'ArrowLeft') changeSlide(-1);
-        if (e.key === 'Escape') closeLightbox();
-    }
-});
-
-// Fermeture lightbox au clic extérieur
-const lightboxElement = document.getElementById('lightbox');
-if (lightboxElement) {
-    lightboxElement.addEventListener('click', function(e) {
-        if (e.target === this) closeLightbox();
-    });
-}
-
-// ===== 4. GALERIE PROJETS (RÉALISATIONS) =====
-const projects = {
-    {% for projet in projects %}
-    '{{ projet.id }}': {
-        title: '{{ projet.titre|escapejs }}',
-        images: [
-            '{{ projet.image.url }}',
-            {% for img in projet.images.all %}
-            '{{ img.image.url }}',
-            {% endfor %}
-        ]
-    },
-    {% endfor %}
-};
-
-let currentProjectId = null;
-let projectCurrentImageIndex = 0;
-
-function openProjectGallery(projectId) {
-    currentProjectId = projectId;
-    projectCurrentImageIndex = 0;
-    const project = projects[projectId];
-    if (!project) return;
-
-    const projectTitleElem = document.getElementById('projectTitle');
-    if (projectTitleElem) {
-        projectTitleElem.textContent = project.title;
-    }
-
-    const thumbnailsGrid = document.getElementById('thumbnailsGrid');
-    if (thumbnailsGrid) {
-        thumbnailsGrid.innerHTML = '';
-
-        project.images.forEach((img, index) => {
-            const thumb = document.createElement('div');
-            thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
-            thumb.onclick = () => goToImage(index);
-            thumbnailsGrid.appendChild(thumb);
-        });
-    }
-
-    displayImage(0);
-
-    const totalImagesElem = document.getElementById('totalImages');
-    if (totalImagesElem) {
-        totalImagesElem.textContent = project.images.length;
-    }
-
-    const modal = document.getElementById('projectGalleryModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeProjectGallery() {
-    const modal = document.getElementById('projectGalleryModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-function displayImage(index) {
-    const project = projects[currentProjectId];
-    if (!project) return;
-
-    const mainImg = document.getElementById('mainImage');
-    const currentIndexElem = document.getElementById('currentIndex');
-
-    if (mainImg) {
-        mainImg.src = project.images[index];
-    }
-
-    if (currentIndexElem) {
-        currentIndexElem.textContent = index + 1;
-    }
-
-    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === index);
-    });
-
-    projectCurrentImageIndex = index;
-}
-
-function nextImage() {
-    const project = projects[currentProjectId];
-    if (!project) return;
-    projectCurrentImageIndex = (projectCurrentImageIndex + 1) % project.images.length;
-    displayImage(projectCurrentImageIndex);
-}
-
-function prevImage() {
-    const project = projects[currentProjectId];
-    if (!project) return;
-    projectCurrentImageIndex = (projectCurrentImageIndex - 1 + project.images.length) % project.images.length;
-    displayImage(projectCurrentImageIndex);
-}
-
-function goToImage(index) {
-    displayImage(index);
-}
-
-// Navigation clavier pour galerie projets
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('projectGalleryModal');
-    if (modal && modal.classList.contains('active')) {
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-        if (e.key === 'Escape') closeProjectGallery();
-    }
-});
-
-// Fermeture modal au clic extérieur
-const projectModal = document.getElementById('projectGalleryModal');
-if (projectModal) {
-    projectModal.addEventListener('click', (e) => {
-        if (e.target.id === 'projectGalleryModal') {
-            closeProjectGallery();
-        }
-    });
-}
-
-// ===== 5. SMOOTH SCROLL =====
+// ===== 4. SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1112,7 +752,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== 6. GESTION UPLOAD FICHIERS =====
+// ===== 5. GESTION UPLOAD FICHIERS =====
 const fileInput = document.getElementById('files');
 const fileList = document.getElementById('fileList');
 let selectedFiles = [];
@@ -1190,23 +830,7 @@ function updateFileLabel() {
     }
 }
 
-// ===== 7. FONCTION CSRF TOKEN =====
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-// ===== 8. ENVOI FORMULAIRE CONTACT =====
+// ===== 6. ENVOI FORMULAIRE CONTACT =====
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -1215,9 +839,7 @@ if (contactForm) {
         const formData = new FormData(this);
         const submitBtn = this.querySelector('button[type="submit"]');
         const formMessage = document.getElementById('formMessage');
-        const csrftoken = getCookie('csrftoken');
 
-        // Suppression et réajout des fichiers
         formData.delete('files[]');
         selectedFiles.forEach(file => {
             formData.append('files[]', file);
@@ -1232,14 +854,12 @@ if (contactForm) {
             body: formData,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': csrftoken
+                'X-CSRFToken': getCookie('csrftoken')
             },
             credentials: 'same-origin'
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Erreur réseau');
-            }
+            if (!response.ok) throw new Error('Erreur réseau');
             return response.json();
         })
         .then(data => {
@@ -1259,20 +879,173 @@ if (contactForm) {
         })
         .catch(error => {
             if (formMessage) {
-                formMessage.innerHTML = '<div style="background: #ef4444; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone au 06 50 03 47 77.</div>';
+                formMessage.innerHTML = '<div style="background: #ef4444; color: white; padding: 1rem; border-radius: 8px; margin-top: 1rem;">Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone.</div>';
             }
             submitBtn.disabled = false;
             submitBtn.textContent = 'Envoyer ma demande';
-            console.error('Erreur:', error);
         });
     });
 }
 
-// ===== FIN DU SCRIPT =====
-console.log('✅ Script Performance Habitat chargé avec succès');
-</script>
+// ===== 7. FONCTION CSRF TOKEN =====
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
+// ===== 8. NAVIGATION CLAVIER =====
+document.addEventListener('keydown', (e) => {
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.style.display === 'block') {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'Escape') closeLightbox();
+    }
 
+    // Menu burger
+    if (e.key === 'Escape') {
+        closeMenu();
+    }
+});
 
+// ===== 9. GALERIE PROJETS (RÉALISATIONS) =====
+const projects = {
+    {% for projet in projects %}
+    '{{ projet.id }}': {
+        title: '{{ projet.titre|escapejs }}',
+        images: [
+            '{{ projet.image.url }}',
+            {% for img in projet.images.all %}
+            '{{ img.image.url }}',
+            {% endfor %}
+        ]
+    },
+    {% endfor %}
+};
+
+let currentProjectId = null;
+let projectCurrentImageIndex = 0;
+
+function openProjectGallery(projectId) {
+    currentProjectId = projectId;
+    projectCurrentImageIndex = 0;
+    const project = projects[projectId];
+    if (!project) return;
+
+    const projectTitleElem = document.getElementById('projectTitle');
+    if (projectTitleElem) {
+        projectTitleElem.textContent = project.title;
+    }
+
+    const thumbnailsGrid = document.getElementById('thumbnailsGrid');
+    if (thumbnailsGrid) {
+        thumbnailsGrid.innerHTML = '';
+        project.images.forEach((img, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+            thumb.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
+            thumb.onclick = () => goToImage(index);
+            thumbnailsGrid.appendChild(thumb);
+        });
+    }
+
+    displayImage(0);
+
+    const totalImagesElem = document.getElementById('totalImages');
+    if (totalImagesElem) {
+        totalImagesElem.textContent = project.images.length;
+    }
+
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeProjectGallery() {
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function displayImage(index) {
+    const project = projects[currentProjectId];
+    if (!project) return;
+
+    const mainImg = document.getElementById('mainImage');
+    const currentIndexElem = document.getElementById('currentIndex');
+
+    if (mainImg) mainImg.src = project.images[index];
+    if (currentIndexElem) currentIndexElem.textContent = index + 1;
+
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+    });
+
+    projectCurrentImageIndex = index;
+}
+
+function nextImage() {
+    const project = projects[currentProjectId];
+    if (!project) return;
+    projectCurrentImageIndex = (projectCurrentImageIndex + 1) % project.images.length;
+    displayImage(projectCurrentImageIndex);
+}
+
+function prevImage() {
+    const project = projects[currentProjectId];
+    if (!project) return;
+    projectCurrentImageIndex = (projectCurrentImageIndex - 1 + project.images.length) % project.images.length;
+    displayImage(projectCurrentImageIndex);
+}
+
+function goToImage(index) {
+    displayImage(index);
+}
+
+// Navigation clavier pour galerie projets
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('projectGalleryModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'Escape') closeProjectGallery();
+    }
+});
+
+// Fermeture modal au clic extérieur
+const projectModal = document.getElementById('projectGalleryModal');
+if (projectModal) {
+    projectModal.addEventListener('click', (e) => {
+        if (e.target.id === 'projectGalleryModal') {
+            closeProjectGallery();
+        }
+    });
+}
+
+// Fermeture lightbox au clic extérieur
+const lightboxElement = document.getElementById('lightbox');
+if (lightboxElement) {
+    lightboxElement.addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+}
+
+console.log('✅ Site Performance Habitat chargé avec succès');
+    </script>
 </body>
 </html>
