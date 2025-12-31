@@ -99,7 +99,7 @@ body {
 }
 
 .header-creation-date {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     font-style: italic;
     letter-spacing: 0.5px;
@@ -1079,9 +1079,6 @@ body {
 .next-lightbox:hover {
     background: rgba(0, 0, 0, 0.8);
 }
-
-
-
 
 .prev-lightbox {
     left: 20px;
