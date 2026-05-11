@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Service, Project, Testimonial, ContactRequest,
     ServiceDetail, Temoignage, CategorieGalerie, PhotoGalerie,
-    ProjectImage
+    ProjectImage, Article
 )
 from django.utils.html import format_html
 
@@ -91,6 +91,37 @@ class PhotoGalerieAdmin(admin.ModelAdmin):
         return "—"
 
     image_preview.short_description = "Preview"
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('titre',)}
+    list_display       = ('titre', 'categorie', 'date_publication', 'is_published', 'image_preview')
+    list_filter        = ('categorie', 'is_published', 'date_publication')
+    search_fields      = ('titre', 'resume', 'contenu')
+    list_editable      = ('is_published',)
+    ordering           = ('-date_publication',)
+    fieldsets = (
+        ('Contenu', {
+            'fields': ('titre', 'slug', 'categorie', 'resume', 'contenu', 'image')
+        }),
+        ('SEO', {
+            'fields': ('meta_description',),
+            'classes': ('collapse',),
+        }),
+        ('Publication', {
+            'fields': ('is_published',)
+        }),
+    )
+
+    def image_preview(self, obj):
+        if obj.image and hasattr(obj.image, 'url'):
+            return format_html(
+                '<img src="{}" width="60" style="object-fit:cover;border-radius:6px;" />',
+                obj.image.url
+            )
+        return '—'
+    image_preview.short_description = 'Image'
 
 
 admin.site.register(Testimonial)

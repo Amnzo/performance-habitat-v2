@@ -112,6 +112,38 @@ class CategorieGalerie(models.Model):
         return self.nom
 
 
+class Article(models.Model):
+    CATEGORIE_CHOICES = [
+        ('conseil',      'Conseils & Astuces'),
+        ('realisation',  'Réalisation'),
+        ('actualite',    'Actualité'),
+    ]
+
+    titre             = models.CharField(max_length=200)
+    slug              = models.SlugField(unique=True)
+    resume            = models.CharField(max_length=300, help_text="Courte description (affiché dans la liste)")
+    contenu           = RichTextField()
+    image             = models.ImageField(upload_to='blog/', blank=True, null=True)
+    categorie         = models.CharField(max_length=20, choices=CATEGORIE_CHOICES, default='conseil')
+    meta_description  = models.CharField(max_length=160, blank=True, help_text="Description SEO (max 160 caractères)")
+    date_publication  = models.DateField(auto_now_add=True)
+    is_published      = models.BooleanField(default=True, verbose_name="Publié")
+
+    class Meta:
+        ordering = ['-date_publication']
+        verbose_name = 'Article'
+        verbose_name_plural = 'Articles'
+
+    def __str__(self):
+        return self.titre
+
+    @property
+    def temps_lecture(self):
+        from django.utils.html import strip_tags
+        words = len(strip_tags(self.contenu).split())
+        return max(1, round(words / 200))
+
+
 class PhotoGalerie(models.Model):
     """Photos de la galerie"""
     titre = models.CharField(max_length=200, verbose_name="Titre")

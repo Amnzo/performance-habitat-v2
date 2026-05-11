@@ -1,0 +1,743 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Conseils Rénovation Brest | Performance Habitat</title>
+    <meta name="description" content="Conseils, astuces et réalisations en rénovation salle de bain, plomberie et électricité à Brest et dans le Finistère. Articles d'experts par Performance Habitat.">
+    <meta name="keywords" content="blog rénovation Brest, conseils salle de bain Finistère, artisan rénovation 29, plomberie Brest, électricité Finistère, travaux maison Brest">
+    <meta name="author" content="Performance Habitat">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="FR-29">
+    <link rel="canonical" href="https://www.performancehabitat.net/blog/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog Rénovation Brest | Conseils d'Experts | Performance Habitat">
+    <meta property="og:description" content="Conseils professionnels en rénovation salle de bain, plomberie, électricité à Brest et Finistère.">
+    <meta property="og:url" content="https://www.performancehabitat.net/blog/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Performance Habitat">
+
+    <!-- Schema.org : BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.performancehabitat.net/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://www.performancehabitat.net/blog/"}
+      ]
+    }
+    </script>
+
+    <!-- Schema.org : Blog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog Rénovation Performance Habitat",
+      "url": "https://www.performancehabitat.net/blog/",
+      "description": "Conseils et réalisations en rénovation à Brest et dans le Finistère",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Performance Habitat",
+        "url": "https://www.performancehabitat.net"
+      },
+      "inLanguage": "fr-FR"
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* ============================================================
+           BLOG PAGE — PREMIUM STYLES
+        ============================================================ */
+
+        /* ---- HERO ---- */
+        .blog-hero {
+            position: relative;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(13,17,23,0.78), rgba(13,17,23,0.96)),
+                url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&fit=crop&auto=format&q=60')
+                center / cover no-repeat;
+        }
+        .blog-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, var(--dark-2));
+        }
+        .blog-hero-inner { position: relative; z-index: 1; }
+        .blog-hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(196,255,14,0.12);
+            border: 1px solid rgba(196,255,14,0.3);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: var(--radius-xl);
+            margin-bottom: 1.5rem;
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .blog-hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-stats {
+            display: inline-flex;
+            gap: 2.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .hero-stat-divider {
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+            align-self: stretch;
+        }
+
+        /* ---- FEATURED ARTICLE ---- */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-5), var(--dark-4));
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            margin-bottom: 4rem;
+        }
+        .featured-card:hover {
+            box-shadow: var(--shadow-glow), var(--shadow-card);
+            border-color: rgba(196,255,14,0.2);
+        }
+        .featured-img-wrap {
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+        }
+        .featured-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .featured-card:hover .featured-img-wrap img { transform: scale(1.04); }
+        .featured-no-img {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--dark-4), var(--dark-3));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 5rem; color: var(--accent); opacity: 0.3;
+        }
+        .featured-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 60%, rgba(13,17,23,0.3));
+        }
+        .featured-badge {
+            position: absolute;
+            top: 1.2rem; left: 1.2rem;
+            background: var(--accent);
+            color: var(--dark-2);
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 5px 14px;
+            border-radius: var(--radius-xl);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .featured-body {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-cat {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        .featured-title {
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+        .featured-resume {
+            color: var(--text-light);
+            font-size: 0.97rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .featured-meta span { display: flex; align-items: center; gap: 0.4rem; }
+        .featured-meta i { color: var(--accent); }
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--dark-2);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 0.85rem 2rem;
+            border-radius: var(--radius-xl);
+            transition: var(--transition);
+            align-self: flex-start;
+            text-decoration: none;
+        }
+        .featured-link:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        /* ---- FILTERS ---- */
+        .blog-filters {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            align-items: center;
+        }
+        .filters-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-right: 0.3rem;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.4rem;
+            border-radius: var(--radius-xl);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .filter-btn .count {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            padding: 1px 7px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--dark-2);
+            border-color: var(--accent);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+        .filter-btn.active .count {
+            background: rgba(0,0,0,0.15);
+            color: var(--dark-2);
+        }
+
+        /* ---- GRID ---- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .article-card {
+            background: linear-gradient(160deg, var(--dark-5) 0%, var(--dark-4) 100%);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow), var(--shadow-card);
+            border-color: rgba(196,255,14,0.18);
+        }
+        .article-img-wrap {
+            position: relative;
+            height: 215px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .article-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s ease;
+        }
+        .article-card:hover .article-img-wrap img { transform: scale(1.07); }
+        .article-no-img {
+            width: 100%; height: 215px;
+            background: linear-gradient(135deg, var(--dark-4), var(--dark-3));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; color: var(--accent); opacity: 0.3;
+            flex-shrink: 0;
+        }
+        .cat-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            background: var(--accent);
+            color: var(--dark-2);
+            font-size: 0.68rem;
+            font-weight: 900;
+            padding: 4px 12px;
+            border-radius: var(--radius-xl);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+        .time-badge {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: rgba(13,17,23,0.75);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .time-badge i { color: var(--accent); font-size: 0.65rem; }
+
+        .article-body { padding: 1.7rem; flex: 1; display: flex; flex-direction: column; }
+        .article-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
+        }
+        .article-cat-text {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .article-date {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .article-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.35;
+            margin-bottom: 0.75rem;
+        }
+        .article-resume {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .article-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.88rem;
+            transition: gap 0.2s ease;
+            text-decoration: none;
+        }
+        .article-link:hover { gap: 12px; }
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .author-avatar {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: var(--dark-2);
+            flex-shrink: 0;
+        }
+        .author-name { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+
+        /* ---- EMPTY STATE ---- */
+        .blog-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 5rem 0;
+        }
+        .blog-empty i { font-size: 3.5rem; color: var(--accent); display: block; margin-bottom: 1.2rem; opacity: 0.45; }
+        .blog-empty p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+        /* ---- CTA SECTION ---- */
+        .blog-cta {
+            background: linear-gradient(135deg, var(--dark-4), var(--dark-3));
+            border: 1px solid rgba(196,255,14,0.12);
+            border-radius: var(--radius-md);
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .blog-cta h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 0.8rem;
+        }
+        .blog-cta p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 860px) {
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-img-wrap { min-height: 260px; }
+            .featured-body { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 600px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 1.2rem; padding: 1rem 1.5rem; }
+            .hero-stat-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+    <div class="container">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Performance Habitat" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-name">Performance <span>Habitat</span></div>
+                    <div class="logo-tagline">NEUF &amp; RÉNOVATION</div>
+                </div>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Accueil</a></li>
+                    <li><a href="/#services" class="nav-link">Services</a></li>
+                    <li><a href="/#realisations" class="nav-link">Réalisations</a></li>
+                    <li><a href="/blog/" class="nav-link" style="color:var(--accent);">Blog</a></li>
+                    <li><a href="/#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <a href="https://www.instagram.com/performancehabitat29/" target="_blank" rel="noopener" class="nav-social insta"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/profile.php?id=61583620142892" target="_blank" rel="noopener" class="nav-social fb"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ===== HERO ===== -->
+<section class="blog-hero">
+    <div class="container blog-hero-inner">
+        <div class="blog-hero-label">
+            <i class="fas fa-pen-nib"></i> Expertise & Conseils
+        </div>
+        <h1>Blog &amp; <span style="color:var(--accent)">Conseils Rénovation</span></h1>
+        <p>Astuces professionnelles, réalisations et actualités par Performance Habitat — Brest &amp; Finistère</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-num">{{ counts.total }}</span>
+                <span class="hero-stat-label">Articles</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-num">3</span>
+                <span class="hero-stat-label">Catégories</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-num">100%</span>
+                <span class="hero-stat-label">Gratuit</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTENU ===== -->
+<section class="section">
+    <div class="container">
+
+        {% if featured and not categorie_active %}
+        <!-- ARTICLE À LA UNE -->
+        <div class="section-label">
+            <i class="fas fa-star"></i> Article à la une
+        </div>
+        <article class="featured-card" data-reveal>
+            <div class="featured-img-wrap">
+                {% if featured.image %}
+                <img src="{{ featured.image.url }}" alt="{{ featured.titre }}" loading="eager">
+                {% else %}
+                <div class="featured-no-img"><i class="fas fa-hard-hat"></i></div>
+                {% endif %}
+                <div class="featured-overlay"></div>
+                <span class="featured-badge">À la une</span>
+            </div>
+            <div class="featured-body">
+                <div class="featured-cat">
+                    <i class="fas fa-tag"></i> {{ featured.get_categorie_display }}
+                </div>
+                <h2 class="featured-title">{{ featured.titre }}</h2>
+                <p class="featured-resume">{{ featured.resume }}</p>
+                <div class="featured-meta">
+                    <span><i class="fas fa-calendar-alt"></i> {{ featured.date_publication|date:"d F Y" }}</span>
+                    <span><i class="fas fa-clock"></i> {{ featured.temps_lecture }} min de lecture</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Brest, Finistère</span>
+                </div>
+                <a href="/blog/{{ featured.slug }}/" class="featured-link">
+                    Lire l'article complet <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+        {% endif %}
+
+        <!-- FILTRES -->
+        <div class="blog-filters">
+            <span class="filters-label">Filtrer :</span>
+            <a href="/blog/" class="filter-btn {% if not categorie_active %}active{% endif %}">
+                <i class="fas fa-th-large"></i> Tous
+                <span class="count">{{ counts.total }}</span>
+            </a>
+            <a href="/blog/?categorie=conseil" class="filter-btn {% if categorie_active == 'conseil' %}active{% endif %}">
+                <i class="fas fa-lightbulb"></i> Conseils &amp; Astuces
+                <span class="count">{{ counts.conseil }}</span>
+            </a>
+            <a href="/blog/?categorie=realisation" class="filter-btn {% if categorie_active == 'realisation' %}active{% endif %}">
+                <i class="fas fa-hard-hat"></i> Réalisations
+                <span class="count">{{ counts.realisation }}</span>
+            </a>
+            <a href="/blog/?categorie=actualite" class="filter-btn {% if categorie_active == 'actualite' %}active{% endif %}">
+                <i class="fas fa-newspaper"></i> Actualités
+                <span class="count">{{ counts.actualite }}</span>
+            </a>
+        </div>
+
+        <!-- GRILLE ARTICLES -->
+        {% if articles %}
+        <div class="blog-grid">
+            {% for article in articles %}
+            <article class="article-card" data-reveal>
+                <div class="article-img-wrap">
+                    {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.titre }}" loading="lazy">
+                    {% else %}
+                    <div class="article-no-img"><i class="fas fa-wrench"></i></div>
+                    {% endif %}
+                    <span class="cat-badge">{{ article.get_categorie_display }}</span>
+                    <span class="time-badge">
+                        <i class="fas fa-clock"></i> {{ article.temps_lecture }} min
+                    </span>
+                </div>
+                <div class="article-body">
+                    <div class="article-meta-row">
+                        <span class="article-cat-text">{{ article.get_categorie_display }}</span>
+                        <span class="article-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ article.date_publication|date:"d M Y" }}
+                        </span>
+                    </div>
+                    <h2 class="article-title">{{ article.titre }}</h2>
+                    <p class="article-resume">{{ article.resume }}</p>
+                    <div class="article-footer">
+                        <a href="/blog/{{ article.slug }}/" class="article-link">
+                            Lire l'article <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="article-author">
+                            <div class="author-avatar">PH</div>
+                            <span class="author-name">Performance Habitat</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        {% elif not featured %}
+        <div class="blog-empty">
+            <i class="fas fa-pen-nib"></i>
+            <p>Aucun article dans cette catégorie pour le moment.</p>
+            <a href="/blog/" class="btn-primary" style="display:inline-flex;margin-top:1rem;">
+                <i class="fas fa-arrow-left"></i> Voir tous les articles
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- CTA DEVIS -->
+        <div class="blog-cta" data-reveal>
+            <h3>Vous avez un projet de rénovation ?</h3>
+            <p>Nos experts se déplacent gratuitement sur Brest et tout le Finistère pour établir votre devis.</p>
+            <div class="cta-btns">
+                <a href="tel:0650034777" class="btn-primary">
+                    <i class="fas fa-phone"></i> 06 50 03 47 77
+                </a>
+                <a href="/#contact" class="btn-outline">
+                    <i class="fas fa-envelope"></i> Devis en ligne
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-banner">AVEC PERFORMANCE HABITAT, VALORISEZ VOTRE PATRIMOINE IMMOBILIER</div>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Performance Habitat</h4>
+                <p>Artisan local spécialiste en rénovation dans le Finistère.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><strong>06 50 03 47 77</strong></p>
+                <p>performancehabitat29@gmail.com</p>
+                <p>Lieu-dit Penfeld — 29820 GUILERS</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2024 Performance Habitat. Tous droits réservés.</div>
+    </div>
+</footer>
+
+<a href="tel:0650034777" class="float-phone" aria-label="Appeler"><i class="fas fa-phone"></i></a>
+
+<script>
+const siteHeader = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => siteHeader.classList.toggle('scrolled', window.scrollY > 80), { passive:true });
+
+const burgerBtn  = document.getElementById('burgerBtn');
+const mainNav    = document.getElementById('mainNav');
+const navOverlay = document.getElementById('navOverlay');
+burgerBtn.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    burgerBtn.classList.toggle('open', open);
+    navOverlay.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+});
+navOverlay.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    burgerBtn.classList.remove('open');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
+    });
+}, { threshold: 0.08 });
+document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>

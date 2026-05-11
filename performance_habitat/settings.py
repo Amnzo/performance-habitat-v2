@@ -1,6 +1,13 @@
 from pathlib import Path
 import os
 
+# Load .env file if present
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'replace-this-secret-key-for-production'
@@ -14,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     # Third party
     'crispy_forms',
@@ -88,7 +96,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'performancehabitat29@gmail.com'
-EMAIL_HOST_PASSWORD = 'njss eyiq rfei fmlo'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 # Configuration supplémentaire pour le formulaire de contact
 DEFAULT_FROM_EMAIL = 'Performance Habitat <performancehabitat29@gmail.com>'

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Service, Project, Testimonial ,Temoignage ,PhotoGalerie , CategorieGalerie
+from .models import Service, Project, Testimonial ,Temoignage ,PhotoGalerie , CategorieGalerie, Article
 from .forms import ContactForm
 
 
@@ -259,6 +259,7 @@ https://www.performance-habitat.fr
         'services': services,
         'projects': projects,
         'temoignages': temoignages,
+        'articles_recents': Article.objects.filter(is_published=True)[:3],
     }
 
     return render(request, 'index.html', context)
@@ -394,6 +395,38 @@ https://www.performance-habitat.fr
     }
 
     return render(request, 'index2.html', context)
+
+def blog_list(request):
+    qs = Article.objects.filter(is_published=True)
+    categorie = request.GET.get('categorie')
+    featured = None
+    if categorie:
+        articles = qs.filter(categorie=categorie)
+    else:
+        featured = qs.first()
+        articles = qs[1:] if featured else qs
+    counts = {
+        'total':      qs.count(),
+        'conseil':    qs.filter(categorie='conseil').count(),
+        'realisation':qs.filter(categorie='realisation').count(),
+        'actualite':  qs.filter(categorie='actualite').count(),
+    }
+    return render(request, 'blog.html', {
+        'articles':        articles,
+        'featured':        featured,
+        'categorie_active': categorie,
+        'counts':          counts,
+    })
+
+
+def blog_detail(request, slug):
+    article = get_object_or_404(Article, slug=slug, is_published=True)
+    articles_recents = Article.objects.filter(is_published=True).exclude(pk=article.pk)[:3]
+    return render(request, 'blog_detail.html', {
+        'article': article,
+        'articles_recents': articles_recents,
+    })
+
 
 def services_list(request):
     services = Service.objects.all()
