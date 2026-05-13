@@ -5,8 +5,11 @@ db.sqlite3
 # IDE
 .idea/
 
-# Media uploads (images serveur)
-media/
+# Media uploads (images serveur) — sauf blog/
+media/galerie/
+media/projects/
+media/services/
+media/services_icons/
 
 # Python cache
 __pycache__/
