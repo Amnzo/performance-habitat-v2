@@ -1,21 +1,182 @@
 {% extends 'base.html' %}
-{% block title %}Réalisations{% endblock %}
+{% load static %}
+
+{% block title %}Nos Réalisations Rénovation à Brest & Finistère | Performance Habitat{% endblock %}
+
+{% block meta_description %}Découvrez nos réalisations en rénovation : salles de bain, plomberie, électricité à Brest et dans le Finistère. Photos avant/après de nos chantiers. Devis gratuit ☎ 06 50 03 47 77{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://www.performancehabitat.net/realisations/">{% endblock %}
+
+{% block og_title %}Réalisations Rénovation Brest — Performance Habitat{% endblock %}
+{% block og_description %}Photos avant/après de nos chantiers de rénovation à Brest et dans le Finistère.{% endblock %}
+{% block og_url %}https://www.performancehabitat.net/realisations/{% endblock %}
+
+{% block nav_realisations %}active{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.performancehabitat.net/"},
+    {"@type":"ListItem","position":2,"name":"Nos Réalisations","item":"https://www.performancehabitat.net/realisations/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Réalisations Performance Habitat",
+  "description": "Galerie de nos chantiers de rénovation à Brest et dans le Finistère",
+  "url": "https://www.performancehabitat.net/realisations/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Performance Habitat",
+    "url": "https://www.performancehabitat.net"
+  }
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.page-hero {
+    background: linear-gradient(rgba(13,17,23,0.82), rgba(13,17,23,0.95)),
+        url('{% static "img/2.jpeg" %}') center/cover no-repeat;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+.page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+.page-hero h1 span { color: var(--accent, #c4ff0e); }
+.page-hero p { color: #ccc; font-size: 1.1rem; max-width: 620px; margin: 0 auto; }
+
+.breadcrumb-bar { background: var(--dark-2, #161b22); padding: 0.75rem 0; font-size: 0.85rem; color: #888; }
+.breadcrumb-bar a { color: var(--accent, #c4ff0e); text-decoration: none; }
+.breadcrumb-bar span { margin: 0 0.4rem; }
+
+.realisations-section { padding: 5rem 0; background: var(--dark-2, #161b22); }
+.realisations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.project-card {
+    background: linear-gradient(160deg, #1a2233 0%, #111827 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(196,255,14,0.12); border-color: rgba(196,255,14,0.2); }
+.project-img-wrap { position: relative; height: 240px; overflow: hidden; }
+.project-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.project-card:hover .project-img-wrap img { transform: scale(1.07); }
+.project-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,17,23,0.85) 0%, transparent 60%);
+}
+.project-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--accent, #c4ff0e); color: #0d1117;
+    font-size: 0.65rem; font-weight: 900; padding: 4px 12px;
+    border-radius: 20px; letter-spacing: 0.07em; text-transform: uppercase;
+}
+.project-body { padding: 1.5rem; }
+.project-body h2 { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; line-height: 1.3; }
+.project-body p { color: #aaa; font-size: 0.88rem; line-height: 1.65; margin-bottom: 1rem; }
+.project-meta-row { display: flex; align-items: center; gap: 1rem; font-size: 0.78rem; color: #777; }
+.project-meta-row span { display: flex; align-items: center; gap: 4px; }
+.project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent, #c4ff0e); font-weight: 800; font-size: 0.88rem;
+    text-decoration: none; margin-top: 0.8rem; transition: gap 0.2s;
+}
+.project-link:hover { gap: 12px; }
+
+.cta-section { padding: 5rem 0; text-align: center; background: linear-gradient(135deg, #0d1117, #1a2233); }
+.cta-section h2 { font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 1rem; }
+.cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 2rem; }
+.btn-cta-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent, #c4ff0e); color: #0d1117;
+    padding: 1rem 2.5rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-cta-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(196,255,14,0.4); }
+.btn-cta-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid var(--accent, #c4ff0e); color: var(--accent, #c4ff0e);
+    padding: 1rem 2.5rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; text-decoration: none;
+    margin-left: 1rem; transition: all 0.3s;
+}
+.btn-cta-secondary:hover { background: var(--accent, #c4ff0e); color: #0d1117; }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1 class="text-success">Réalisations</h1>
-<div class="row mt-4">
-  {% for p in projects %}
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.titre }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ p.titre }}</h5>
-          <p class="text-secondary">{{ p.description|truncatewords:20 }}</p>
-          <a href="{% url 'project_detail' p.slug %}" class="stretched-link"></a>
-        </div>
-      </div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <a href="/">Accueil</a><span>›</span> Nos Réalisations
     </div>
-  {% empty %}
-    <div class="col-12">Aucune réalisation pour l'instant.</div>
-  {% endfor %}
 </div>
+
+<!-- Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Nos <span>Réalisations</span><br>à Brest & dans le Finistère</h1>
+        <p>Découvrez nos chantiers de rénovation : salles de bain, plomberie, électricité, carrelage. Photos avant/après de vrais projets réalisés dans le Finistère.</p>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="realisations-section">
+    <div class="container">
+        <div class="realisations-grid">
+            {% for p in projects %}
+            <article class="project-card" itemscope itemtype="https://schema.org/CreativeWork">
+                <div class="project-img-wrap">
+                    <img src="{{ p.image.url }}"
+                         alt="{{ p.titre }}{% if p.ville %} à {{ p.ville }}{% endif %} — Performance Habitat"
+                         loading="lazy"
+                         itemprop="image">
+                    <div class="project-overlay"></div>
+                    {% if p.type_travaux %}<div class="project-badge">{{ p.type_travaux }}</div>{% endif %}
+                </div>
+                <div class="project-body">
+                    <h2 itemprop="name">{{ p.titre }}</h2>
+                    <p itemprop="description">{{ p.description|striptags|truncatechars:130 }}</p>
+                    <div class="project-meta-row">
+                        {% if p.date %}<span><i class="fas fa-calendar-alt" style="color:var(--accent)"></i> {{ p.date|date:"Y" }}</span>{% endif %}
+                        {% if p.ville %}<span><i class="fas fa-map-marker-alt" style="color:var(--accent)"></i> {{ p.ville }}</span>{% endif %}
+                    </div>
+                    <a href="{% url 'project_detail' p.slug %}" class="project-link">
+                        Voir la réalisation <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            {% empty %}
+            <p style="color:#aaa;text-align:center;grid-column:1/-1;padding:2rem;">Nos réalisations arrivent bientôt.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Votre Projet de Rénovation à Brest ?</h2>
+        <p>Contactez-nous pour un devis gratuit et sans engagement. Déplacement sur Brest et tout le Finistère.</p>
+        <a href="/#contact" class="btn-cta-primary"><i class="fas fa-envelope"></i> Demander un devis</a>
+        <a href="tel:0650034777" class="btn-cta-secondary"><i class="fas fa-phone"></i> 06 50 03 47 77</a>
+    </div>
+</section>
+
 {% endblock %}

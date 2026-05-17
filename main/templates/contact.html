@@ -1,30 +1,184 @@
 {% extends 'base.html' %}
-{% block title %}Contact{% endblock %}
+{% load static %}
+
+{% block title %}Contact & Devis Gratuit — Rénovation Brest | Performance Habitat{% endblock %}
+
+{% block meta_description %}Contactez Performance Habitat pour un devis gratuit : rénovation salle de bain, plomberie, électricité à Brest et dans le Finistère. Réponse sous 24h. ☎ 06 50 03 47 77{% endblock %}
+
+{% block robots %}index, follow{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://www.performancehabitat.net/contact/">{% endblock %}
+
+{% block og_title %}Contact & Devis Gratuit — Performance Habitat Brest{% endblock %}
+{% block og_description %}Demandez votre devis gratuit pour vos travaux de rénovation à Brest et dans le Finistère.{% endblock %}
+{% block og_url %}https://www.performancehabitat.net/contact/{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.performancehabitat.net/"},
+    {"@type":"ListItem","position":2,"name":"Contact","item":"https://www.performancehabitat.net/contact/"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.page-hero {
+    background: linear-gradient(rgba(13,17,23,0.88), rgba(13,17,23,0.97)),
+        url('{% static "img/4.jpg" %}') center/cover no-repeat;
+    padding: 5rem 0 3rem;
+    text-align: center;
+}
+.page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; color: #fff; margin-bottom: 0.75rem; }
+.page-hero h1 span { color: var(--accent, #c4ff0e); }
+.page-hero p { color: #ccc; font-size: 1rem; }
+
+.breadcrumb-bar { background: var(--dark-2, #161b22); padding: 0.75rem 0; font-size: 0.85rem; color: #888; }
+.breadcrumb-bar a { color: var(--accent, #c4ff0e); text-decoration: none; }
+.breadcrumb-bar span { margin: 0 0.4rem; }
+
+.contact-section { padding: 5rem 0; background: var(--dark-2, #161b22); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+.contact-info h2 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
+.contact-info h2 span { color: var(--accent, #c4ff0e); }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.contact-icon { width: 44px; height: 44px; background: rgba(196,255,14,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent, #c4ff0e); font-size: 1.1rem; }
+.contact-item-text strong { color: #fff; display: block; margin-bottom: 0.25rem; }
+.contact-item-text a { color: #bbb; text-decoration: none; transition: color 0.2s; }
+.contact-item-text a:hover { color: var(--accent, #c4ff0e); }
+.contact-item-text p { color: #bbb; margin: 0; }
+
+.contact-form-wrap { background: linear-gradient(160deg, #1a2233 0%, #111827 100%); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 2.5rem; }
+.contact-form-wrap h2 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; color: #bbb; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%; padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit;
+    transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent, #c4ff0e); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.btn-submit {
+    width: 100%; padding: 1rem; border: none; border-radius: 8px;
+    background: var(--accent, #c4ff0e); color: #0d1117;
+    font-weight: 800; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(196,255,14,0.4); }
+.alert-success { background: rgba(196,255,14,0.1); border: 1px solid rgba(196,255,14,0.3); color: #c4ff0e; padding: 1rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1 class="text-success">Contact / Demande de devis</h1>
 
-{% if success %}
-  <div class="alert alert-success">Merci — votre demande a bien été enregistrée. Nous vous répondrons bientôt.</div>
-{% endif %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <a href="/">Accueil</a><span>›</span> Contact & Devis
+    </div>
+</div>
 
-<form method="post" class="mt-3">
-  {% csrf_token %}
-  <div class="mb-3">
-    <label class="form-label">Nom</label>
-    <input type="text" class="form-control" id="id_nom" name="nom" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Email</label>
-    <input type="email" class="form-control" id="id_email" name="email" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Téléphone</label>
-    <input type="text" class="form-control" id="id_telephone" name="telephone">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Message</label>
-    <textarea class="form-control" id="id_message" name="message" rows="4" required></textarea>
-  </div>
-  <button class="btn btn-primary">Envoyer</button>
-</form>
+<!-- Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Demandez votre <span>Devis Gratuit</span></h1>
+        <p>Réponse sous 24h · Déplacement gratuit sur Brest et le Finistère</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+
+            <!-- Infos -->
+            <div class="contact-info">
+                <h2>Parlons de votre <span>projet</span></h2>
+                <p style="color:#aaa;margin-bottom:2rem;">Que vous souhaitiez rénover votre salle de bain, refaire votre plomberie ou améliorer votre installation électrique, nous sommes là pour vous conseiller.</p>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Téléphone</strong>
+                        <a href="tel:0650034777">06 50 03 47 77</a>
+                        <a href="tel:0635130299" style="display:block;">06 35 13 02 99</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Email</strong>
+                        <a href="mailto:performancehabitat29@gmail.com">performancehabitat29@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Adresse</strong>
+                        <p>Lieu-dit Penfeld — 29820 GUILERS</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Horaires</strong>
+                        <p>Lundi–Vendredi : 08h00–18h00</p>
+                    </div>
+                </div>
+
+                <p style="color:#777;font-size:0.85rem;margin-top:2rem;">
+                    <strong style="color:#fff;">Zone d'intervention :</strong><br>
+                    Brest, Guilers, Plouzané, Le Relecq-Kerhuon, Landerneau, Saint-Renan, Landivisiau, Lesneven et tout le Finistère (29).
+                </p>
+            </div>
+
+            <!-- Form -->
+            <div class="contact-form-wrap">
+                <h2>Votre message</h2>
+                {% if success %}
+                <div class="alert-success">
+                    <i class="fas fa-check-circle"></i>
+                    Merci ! Votre demande a bien été enregistrée. Nous vous répondrons sous 24h.
+                </div>
+                {% endif %}
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_nom">Nom complet *</label>
+                        <input type="text" id="id_nom" name="nom" required placeholder="Jean Dupont">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Email *</label>
+                        <input type="email" id="id_email" name="email" required placeholder="jean@email.fr">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_telephone">Téléphone</label>
+                        <input type="tel" id="id_telephone" name="telephone" placeholder="06 XX XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_message">Votre message *</label>
+                        <textarea id="id_message" name="message" required placeholder="Décrivez votre projet (type de travaux, surface, délai souhaité…)"></textarea>
+                    </div>
+                    <!-- Honeypot anti-spam -->
+                    <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 {% endblock %}

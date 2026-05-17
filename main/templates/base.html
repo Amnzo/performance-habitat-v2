@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Performance Habitat — Rénovation Brest & Finistère{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Performance Habitat : artisan expert en rénovation de salle de bain, plomberie, électricité et chauffage à Brest et dans le Finistère. Devis gratuit ☎ 06 50 03 47 77{% endblock %}">
+    <meta name="author" content="Performance Habitat">
+    <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+    <meta name="geo.region" content="FR-29">
+    <meta name="geo.placename" content="Brest, Guilers, Finistère">
+    {% block canonical %}<link rel="canonical" href="https://www.performancehabitat.net/">{% endblock %}
+
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:site_name" content="Performance Habitat">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="{% block og_title %}Performance Habitat — Rénovation Brest & Finistère{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Artisan expert en rénovation salle de bain, plomberie, électricité à Brest et dans le Finistère. Devis gratuit.{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://www.performancehabitat.net/{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://www.performancehabitat.net{% static 'img/logo.png' %}{% endblock %}">
+
+    {% block schema %}{% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+    <div class="container">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Performance Habitat — Artisan Rénovation Brest" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-name">Performance <span>Habitat</span></div>
+                    <div class="logo-tagline">NEUF &amp; RÉNOVATION — Ensemble, assurons votre confort</div>
+                </div>
+            </a>
+            <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Accueil</a></li>
+                    <li><a href="/services/" class="nav-link {% block nav_services %}{% endblock %}">Services</a></li>
+                    <li><a href="/realisations/" class="nav-link {% block nav_realisations %}{% endblock %}">Réalisations</a></li>
+                    <li><a href="/blog/" class="nav-link {% block nav_blog %}{% endblock %}" style="color:var(--accent);font-weight:700;">Blog</a></li>
+                    <li><a href="/#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <a href="https://www.instagram.com/performancehabitat29/" target="_blank" rel="noopener noreferrer" class="nav-social insta" aria-label="Instagram Performance Habitat"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/profile.php?id=61583620142892" target="_blank" rel="noopener noreferrer" class="nav-social fb" aria-label="Facebook Performance Habitat"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="burger-btn" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main id="main-content">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="footer-banner">AVEC PERFORMANCE HABITAT, VALORISEZ VOTRE PATRIMOINE IMMOBILIER</div>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Performance Habitat</h4>
+                <p>Votre artisan local spécialiste en rénovation et amélioration énergétique dans le Finistère.</p>
+                <p style="margin-top:0.8rem;">
+                    <a href="https://www.instagram.com/performancehabitat29/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;"><i class="fab fa-instagram"></i> Instagram</a>
+                    &ensp;
+                    <a href="https://web.facebook.com/profile.php?id=61583620142892" target="_blank" rel="noopener noreferrer" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;"><i class="fab fa-facebook-f"></i> Facebook</a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><strong><a href="tel:0650034777" style="color:inherit;">06 50 03 47 77</a></strong></p>
+                <p><a href="tel:0635130299" style="color:inherit;">06 35 13 02 99</a></p>
+                <p><a href="mailto:performancehabitat29@gmail.com" style="color:inherit;">performancehabitat29@gmail.com</a></p>
+                <p>Lieu-dit Penfeld — 29820 GUILERS</p>
+            </div>
+            <div class="footer-col">
+                <h4>Mentions légales</h4>
+                <p>N° SIRET : 793 768 565 00012</p>
+                <p>Capital social : 12 500 €</p>
+                <p>Entreprise créée en 2013</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Performance Habitat. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+<a href="tel:0650034777" class="float-phone" aria-label="Appeler Performance Habitat"><i class="fas fa-phone"></i></a>
+
+<script>
+(function () {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav   = document.getElementById('mainNav');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleMenu(open) {
+        mainNav.classList.toggle('open', open);
+        navOverlay.classList.toggle('active', open);
+        burgerBtn.setAttribute('aria-expanded', String(open));
+    }
+
+    burgerBtn.addEventListener('click', () => toggleMenu(!mainNav.classList.contains('open')));
+    navOverlay.addEventListener('click', () => toggleMenu(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+})();
+</script>
+
+{% block extra_js %}{% endblock %}
+</body>
+</html>

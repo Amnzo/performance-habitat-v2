@@ -4,7 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ project.titre }} - Performance Habitat</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ project.titre }}{% if project.ville %} à {{ project.ville }}{% endif %} | Réalisation Performance Habitat</title>
+    <meta name="description" content="{{ project.meta_description|default:project.description|striptags|truncatechars:155 }}">
+    <meta name="author" content="Performance Habitat">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="FR-29">
+    <link rel="canonical" href="https://www.performancehabitat.net/realisations/{{ project.slug }}/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ project.titre }} | Performance Habitat">
+    <meta property="og:description" content="{{ project.description|striptags|truncatechars:155 }}">
+    <meta property="og:url" content="https://www.performancehabitat.net/realisations/{{ project.slug }}/">
+    <meta property="og:image" content="https://www.performancehabitat.net{{ project.image.url }}">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Performance Habitat">
+
+    <!-- Schema.org : Breadcrumb + CreativeWork -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.performancehabitat.net/"},
+        {"@type":"ListItem","position":2,"name":"Réalisations","item":"https://www.performancehabitat.net/realisations/"},
+        {"@type":"ListItem","position":3,"name":"{{ project.titre }}","item":"https://www.performancehabitat.net/realisations/{{ project.slug }}/"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "{{ project.titre }}",
+      "description": "{{ project.description|striptags|truncatechars:200 }}",
+      "url": "https://www.performancehabitat.net/realisations/{{ project.slug }}/",
+      {% if project.image %}"primaryImageOfPage": {"@type":"ImageObject","url":"https://www.performancehabitat.net{{ project.image.url }}"},{% endif %}
+      "author": {
+        "@type": "Organization",
+        "name": "Performance Habitat",
+        "url": "https://www.performancehabitat.net"
+      }{% if project.date %},
+      "dateCreated": "{{ project.date|date:'Y-m-d' }}"{% endif %}
+    }
+    </script>
 
     <style>
         * {

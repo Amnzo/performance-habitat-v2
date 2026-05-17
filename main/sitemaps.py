@@ -1,16 +1,17 @@
 import datetime
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from .models import Article
+from .models import Article, Project
 
 
 class StaticSitemap(Sitemap):
     def items(self):
         return [
-            ('index',    1.0,  'daily'),
-            ('blog',     0.9,  'weekly'),
-            ('services', 0.8,  'monthly'),
-            ('projects', 0.8,  'monthly'),
+            ('index',    1.0,  'daily',   datetime.date(2025, 1, 1)),
+            ('blog',     0.9,  'weekly',  datetime.date(2025, 1, 1)),
+            ('services', 0.8,  'monthly', datetime.date(2025, 1, 1)),
+            ('projects', 0.8,  'monthly', datetime.date(2025, 1, 1)),
+            ('contact',  0.5,  'yearly',  datetime.date(2025, 1, 1)),
         ]
 
     def location(self, item):
@@ -23,7 +24,7 @@ class StaticSitemap(Sitemap):
         return item[2]
 
     def lastmod(self, item):
-        return datetime.date.today()
+        return item[3]
 
 
 class ArticleSitemap(Sitemap):
@@ -34,7 +35,21 @@ class ArticleSitemap(Sitemap):
         return Article.objects.filter(is_published=True).order_by('-date_publication')
 
     def lastmod(self, obj):
-        return obj.date_publication
+        return obj.date_modification
 
     def location(self, obj):
-        return f'/blog/{obj.slug}/'
+        return reverse('blog_detail', kwargs={'slug': obj.slug})
+
+
+class ProjectSitemap(Sitemap):
+    changefreq = 'monthly'
+    priority = 0.75
+
+    def items(self):
+        return Project.objects.all().order_by('-date')
+
+    def lastmod(self, obj):
+        return obj.date
+
+    def location(self, obj):
+        return reverse('project_detail', kwargs={'slug': obj.slug})

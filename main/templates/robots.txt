@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /media/
 Disallow: /static/
 
 Sitemap: https://www.performancehabitat.net/sitemap.xml

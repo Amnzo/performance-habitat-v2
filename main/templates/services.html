@@ -1,17 +1,182 @@
 {% extends 'base.html' %}
-{% block title %}Services{% endblock %}
+{% load static %}
+
+{% block title %}Nos Services de Rénovation à Brest & Finistère | Performance Habitat{% endblock %}
+
+{% block meta_description %}Découvrez tous nos services : rénovation salle de bain, plomberie, électricité, chauffage, carrelage à Brest et dans le Finistère. Artisan certifié. Devis gratuit ☎ 06 50 03 47 77{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://www.performancehabitat.net/services/">{% endblock %}
+
+{% block og_title %}Services Rénovation Brest — Performance Habitat{% endblock %}
+{% block og_description %}Salle de bain, plomberie, électricité, chauffage, carrelage : tous vos travaux dans le Finistère. Devis gratuit.{% endblock %}
+{% block og_url %}https://www.performancehabitat.net/services/{% endblock %}
+
+{% block nav_services %}active{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.performancehabitat.net/"},
+    {"@type":"ListItem","position":2,"name":"Nos Services","item":"https://www.performancehabitat.net/services/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Services de rénovation Performance Habitat",
+  "description": "Nos prestations d'artisan rénovation à Brest et dans le Finistère",
+  "url": "https://www.performancehabitat.net/services/",
+  "itemListElement": [
+    {% for s in services %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "item": {
+        "@type": "Service",
+        "name": "{{ s.titre }}",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Performance Habitat",
+          "url": "https://www.performancehabitat.net"
+        },
+        "areaServed": {"@type": "AdministrativeArea", "name": "Finistère"}
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.page-hero {
+    background: linear-gradient(rgba(13,17,23,0.82), rgba(13,17,23,0.95)),
+        url('{% static "img/s1.jpeg" %}') center/cover no-repeat;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+.page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+.page-hero h1 span { color: var(--accent); }
+.page-hero p { color: #ccc; font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+
+.breadcrumb-bar { background: var(--dark-2, #161b22); padding: 0.75rem 0; font-size: 0.85rem; color: #888; }
+.breadcrumb-bar a { color: var(--accent, #c4ff0e); text-decoration: none; }
+.breadcrumb-bar span { margin: 0 0.4rem; }
+
+.services-section { padding: 5rem 0; background: var(--dark-2, #161b22); }
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.service-card {
+    background: linear-gradient(160deg, #1a2233 0%, #111827 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(196,255,14,0.12); border-color: rgba(196,255,14,0.2); }
+.service-img { width: 100%; height: 200px; object-fit: cover; }
+.service-img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, #1e2d40, #0d1117); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--accent, #c4ff0e); opacity: 0.4; }
+.service-body { padding: 1.5rem; }
+.service-body h2 { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem; }
+.service-body p { color: #aaa; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+.service-details { list-style: none; padding: 0; margin: 0 0 1.2rem; }
+.service-details li { color: #bbb; font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+.service-details li::before { content: '✓'; color: var(--accent, #c4ff0e); font-weight: 700; flex-shrink: 0; }
+
+.cta-section { padding: 5rem 0; text-align: center; background: linear-gradient(135deg, #0d1117, #1a2233); }
+.cta-section h2 { font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 1rem; }
+.cta-section p { color: #aaa; max-width: 500px; margin: 0 auto 2rem; }
+.btn-cta-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent, #c4ff0e); color: #0d1117;
+    padding: 1rem 2.5rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-cta-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(196,255,14,0.4); }
+.btn-cta-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 2px solid var(--accent, #c4ff0e); color: var(--accent, #c4ff0e);
+    padding: 1rem 2.5rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; text-decoration: none;
+    margin-left: 1rem; transition: all 0.3s;
+}
+.btn-cta-secondary:hover { background: var(--accent, #c4ff0e); color: #0d1117; }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1 class="text-success">Nos services</h1>
-<div class="row mt-4">
-  {% for s in services %}
-    <div class="col-md-6 mb-3">
-      <div class="card p-3 h-100">
-        <h4 class="card-title">{{ s.titre }}</h4>
-        <p class="text-secondary">{{ s.description }}</p>
-      </div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <a href="/">Accueil</a><span>›</span> Nos Services
     </div>
-  {% empty %}
-    <div class="col-12">Aucun service pour l'instant.</div>
-  {% endfor %}
 </div>
+
+<!-- Hero -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Nos Services de <span>Rénovation</span><br>à Brest & dans le Finistère</h1>
+        <p>Salle de bain · Plomberie · Électricité · Chauffage · Carrelage<br>Un seul artisan pour tous vos travaux — Devis gratuit & sans engagement</p>
+        <a href="tel:0650034777" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent,#c4ff0e);color:#0d1117;padding:0.9rem 2rem;border-radius:50px;font-weight:800;text-decoration:none;">
+            <i class="fas fa-phone"></i> 06 50 03 47 77
+        </a>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-section">
+    <div class="container">
+        <div class="services-grid">
+            {% for s in services %}
+            <article class="service-card" itemscope itemtype="https://schema.org/Service">
+                {% if s.image %}
+                    <img src="{{ s.image.url }}" alt="{{ s.titre }} à Brest — Performance Habitat" class="service-img" loading="lazy" itemprop="image">
+                {% else %}
+                    <div class="service-img-placeholder"><i class="fas fa-tools"></i></div>
+                {% endif %}
+                <div class="service-body">
+                    <h2 itemprop="name">{{ s.titre }}</h2>
+                    {% if s.description %}
+                    <p itemprop="description">{{ s.description }}</p>
+                    {% else %}
+                    <p>Performance Habitat réalise vos travaux de {{ s.titre|lower }} à Brest et dans tout le Finistère. Intervention rapide, qualité garantie.</p>
+                    {% endif %}
+                    {% if s.details.exists %}
+                    <ul class="service-details">
+                        {% for detail in s.details.all %}
+                        <li>{{ detail.texte }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+            <p style="color:#aaa;text-align:center;grid-column:1/-1;padding:2rem;">Nos services arrivent bientôt.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Besoin d'un Devis Gratuit ?</h2>
+        <p>Décrivez votre projet et nous vous recontactons sous 24h. Déplacement gratuit sur Brest et le Finistère.</p>
+        <a href="/#contact" class="btn-cta-primary"><i class="fas fa-envelope"></i> Demander un devis</a>
+        <a href="tel:0650034777" class="btn-cta-secondary"><i class="fas fa-phone"></i> Nous appeler</a>
+    </div>
+</section>
+
 {% endblock %}

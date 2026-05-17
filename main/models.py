@@ -1,16 +1,12 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-#this is best tha ol way
-
-from django.db import models
 
 class Service(models.Model):
     titre = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    #image = models.ImageField(upload_to='services/', blank=True, null=True)
     image = models.ImageField(upload_to='services/', blank=True, null=True, default='services/default.jpg')
-
-    # icone = models.CharField(max_length=100, blank=True)  # ex: 🚿 ou fa-solid fa-bath  # ex: 🚿 ou fa-solid fa-bath
+    description = models.TextField(blank=True, help_text="Description détaillée du service (visible sur la page)")
+    meta_description = models.CharField(max_length=160, blank=True, help_text="Description SEO (max 160 caractères)")
 
     def __str__(self):
         return self.titre
@@ -45,12 +41,15 @@ class Project(models.Model):
     image = models.ImageField(upload_to='projects/')
     date = models.DateField(null=True, blank=True)
     is_featured = models.BooleanField(default=False)
+    meta_description = models.CharField(max_length=160, blank=True, help_text="Description SEO (max 160 caractères)")
+    ville = models.CharField(max_length=100, blank=True, help_text="Ex: Brest, Guilers, Plouzané")
+    type_travaux = models.CharField(max_length=100, blank=True, help_text="Ex: Salle de bain, Plomberie")
 
     def __str__(self):
         return self.titre
 
     class Meta:
-        ordering = ['-date']  # Les plus récents d’abord
+        ordering = ['-date']
 
 
 class ProjectImage(models.Model):
@@ -126,7 +125,10 @@ class Article(models.Model):
     image             = models.ImageField(upload_to='blog/', blank=True, null=True)
     categorie         = models.CharField(max_length=20, choices=CATEGORIE_CHOICES, default='conseil')
     meta_description  = models.CharField(max_length=160, blank=True, help_text="Description SEO (max 160 caractères)")
+    mots_cles         = models.CharField(max_length=255, blank=True, help_text="Mots-clés SEO séparés par des virgules")
+    auteur            = models.CharField(max_length=100, default='Performance Habitat', help_text="Nom de l'auteur")
     date_publication  = models.DateField(auto_now_add=True)
+    date_modification = models.DateField(auto_now=True)
     is_published      = models.BooleanField(default=True, verbose_name="Publié")
 
     class Meta:
