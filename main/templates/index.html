@@ -95,7 +95,15 @@
         ]
       },
       "foundingDate": "2013",
-      "knowsAbout": ["Rénovation salle de bain","Plomberie","Électricité","Chauffage","Carrelage","Douche italienne","Pompe à chaleur"]
+      "knowsAbout": ["Rénovation salle de bain","Plomberie","Électricité","Chauffage","Carrelage","Douche italienne","Pompe à chaleur"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "reviewCount": "30",
+        "ratingCount": "30"
+      }
     }
     </script>
 
@@ -533,6 +541,26 @@
     <div class="container">
         <h2 class="section-title" data-reveal>Témoignages <span>Clients</span></h2>
         <p class="section-subtitle" data-reveal>Ce que nos clients disent de nous</p>
+
+        <!-- Bandeau note Google -->
+        <div class="google-rating-banner" data-reveal itemscope itemtype="https://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="5.0">
+            <meta itemprop="reviewCount" content="30">
+            <meta itemprop="bestRating" content="5">
+            <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+                 alt="Google" class="google-logo" loading="lazy" width="74" height="24">
+            <div class="google-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <span class="google-note"><strong>5,0</strong> / 5</span>
+            <span class="google-sep">·</span>
+            <span class="google-count">30 avis vérifiés</span>
+            <a href="https://www.google.com/maps/search/performance+habitat+guilers"
+               target="_blank" rel="noopener noreferrer" class="google-link">
+                Voir les avis <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
 
         {% if temoignages %}
         <div class="swiper testimonials-swiper">
