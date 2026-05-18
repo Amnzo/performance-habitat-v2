@@ -36,17 +36,21 @@ for src, dst in copies:
 
 # Assignations article → image (pertinence thématique)
 assignments = {
+    # Rénovation SDB Brest expertise → image salle de bain dédiée
     'renovation-salle-de-bain-brest-performance-habitat':
         'blog/salle-de-bain-renovation-brest.png',
 
+    # Moderniser SDB → photo de réalisation SDB
     'moderniser-salle-de-bain-brest':
-        'blog/salle-de-bain-renovation-brest.png',
+        'blog/renovation-salle-de-bain-brest-realisation.jpg',
 
+    # SDB PMR → image 5 erreurs (salle de bain accessible)
     'salle-de-bain-pmr-brest':
-        'blog/salle-de-bain-renovation-brest.png',
+        'blog/5-erreurs-renovation-salle-de-bain.jpg',
 
+    # Réalisation SDB → image réalisation originale
     'renovation-salle-de-bain-brest-realisation':
-        'blog/realisation-renovation-brest.webp',
+        'blog/renovation-salle-de-bain-brest-realisation.jpg',
 
     '5-erreurs-renovation-salle-de-bain':
         'blog/5-erreurs-renovation-salle-de-bain.jpg',
@@ -69,8 +73,9 @@ assignments = {
     'quand-changer-plomberie-signes':
         'blog/quand-changer-plomberie-signes.jpg',
 
+    # Artisan Guilers → chantier rénovation (pas cuisine)
     'artisan-renovation-guilers':
-        'blog/renovation-guilers-finistere.jpg',
+        'blog/travaux-renovation-appartement-brest.png',
 
     'artisan-renovation-plouzane':
         'blog/travaux-renovation-appartement-brest.png',
